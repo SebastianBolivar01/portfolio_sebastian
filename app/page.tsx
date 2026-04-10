@@ -43,11 +43,11 @@ export default function Home() {
           <a href="#" className="nav-logo">KA<span className="dot">.</span></a>
           
           <nav className="nav-links">
-            <a href="#">Home</a>
-            <a href="#services">Services</a>
-            <a href="#portfolios">Portfolios</a>
-            <a href="#freelance">Freelance</a>
-            <a href="#contact">Contact Us</a>
+            <a href="#">{t.navHome}</a>
+            <a href="#services">{t.navServices}</a>
+            <a href="#portfolios">{t.navPortfolios}</a>
+            <a href="#freelance">{t.navFreelance}</a>
+            <a href="#contact">{t.navContact}</a>
             
             {mounted && (
               <>
@@ -77,7 +77,7 @@ export default function Home() {
           <div className="hero-col hero-col-left">
             <h1 className="hero-main-title">Sebastian<br/>Bolivar<span className="dot">.</span></h1>
             <p className="hero-social-text">Instagram | Facebook<br/>WhatsApp | Telegram.</p>
-            <a href="#contact" className="btn btn-outline-gold">CONTACT ME</a>
+            <a href="#contact" className="btn btn-outline-gold">{t.btnContact}</a>
           </div>
           
           <div className="hero-col hero-col-center">
@@ -88,7 +88,7 @@ export default function Home() {
           </div>
 
           <div className="hero-col hero-col-right">
-            <h4 className="hero-intro-label">INTRODUCTION</h4>
+            <h4 className="hero-intro-label">{t.introLabel}</h4>
             <h2 className="hero-intro-title">{t.heroTitleHighlight}</h2>
             <p className="hero-intro-desc">
               {t.heroSubtitle}
@@ -99,41 +99,41 @@ export default function Home() {
         {/* SERVICES SECTION */}
         <section id="services" className="section-dark">
           <div className="section-head">
-            <span className="section-subtitle">SERVICES</span>
-            <h2 className="section-title">What Am I Providing</h2>
-            <p className="section-desc">If you want any of the following service please go on the freelance section there you can find some of the freelance platforms where I am available.</p>
+            <span className="section-subtitle">{t.servicesSubtitle}</span>
+            <h2 className="section-title">{t.servicesTitle}</h2>
+            <p className="section-desc">{t.servicesDesc}</p>
           </div>
           
           <div className="services-grid">
             <div className="service-card">
               <span className="service-icon"><i className="devicon-nextjs-plain"></i></span>
-              <span className="service-title">Web<br/>Development</span>
+              <span className="service-title" dangerouslySetInnerHTML={{__html: t.service1.replace(' ', '<br/>')}}></span>
             </div>
             <div className="service-card">
               <span className="service-icon"><i className="devicon-react-original"></i></span>
-              <span className="service-title">Front-end<br/>Engineering</span>
+              <span className="service-title" dangerouslySetInnerHTML={{__html: t.service2.replace(' ', '<br/>')}}></span>
             </div>
             <div className="service-card">
               <span className="service-icon"><i className="devicon-python-plain"></i></span>
-              <span className="service-title">Back-end<br/>Architecture</span>
+              <span className="service-title" dangerouslySetInnerHTML={{__html: t.service3.replace(' ', '<br/>')}}></span>
             </div>
             <div className="service-card">
               <span className="service-icon"><i className="devicon-figma-plain"></i></span>
-              <span className="service-title">UI / UX<br/>Designing</span>
+              <span className="service-title" dangerouslySetInnerHTML={{__html: t.service4.replace(' ', '<br/>')}}></span>
             </div>
           </div>
           
           <div style={{textAlign: 'center', marginTop: '50px'}}>
-             <a href="#contact" className="btn btn-outline-gold">BUY SERVICE</a>
+             <a href="#contact" className="btn btn-outline-gold">{t.btnBuyService}</a>
           </div>
         </section>
 
         {/* PORTFOLIOS SECTION */}
         <section id="portfolios" className="section">
           <div className="section-head">
-            <span className="section-subtitle">PORTFOLIOS</span>
-            <h2 className="section-title">My Portfolios Collection</h2>
-            <p className="section-desc">These are some of my own portfolios I made recently. Have a look at them and let me know, if you like them.</p>
+            <span className="section-subtitle">{t.portfolioSubtitle}</span>
+            <h2 className="section-title">{t.portfolioTitle}</h2>
+            <p className="section-desc">{t.portfolioDesc}</p>
             <div className="section-divider"></div>
           </div>
 
@@ -204,23 +204,23 @@ export default function Home() {
         {/* FREELANCE SECTION */}
         <section id="freelance" className="section-dark">
           <div className="section-head">
-            <span className="section-subtitle">FREELANCE</span>
-            <h2 className="section-title">Hire Me As A Freelancer</h2>
-            <p className="section-desc">I am available on different freelancing platform. You can Hire Me on given platforms.</p>
+            <span className="section-subtitle">{t.freelanceSubtitle}</span>
+            <h2 className="section-title">{t.freelanceTitle}</h2>
+            <p className="section-desc">{t.freelanceDesc}</p>
           </div>
           
           <div className="freelance-bars">
             <div className="freelance-item">
               <h3 className="freelance-title">FIVERR</h3>
-              <a href="#contact" className="btn btn-outline-gold">HIRE ME</a>
+              <a href="#contact" className="btn btn-outline-gold">{t.btnHireMe}</a>
             </div>
             <div className="freelance-item">
               <h3 className="freelance-title">UPWORK</h3>
-              <a href="#contact" className="btn btn-outline-gold">HIRE ME</a>
+              <a href="#contact" className="btn btn-outline-gold">{t.btnHireMe}</a>
             </div>
             <div className="freelance-item">
               <h3 className="freelance-title">GURU</h3>
-              <a href="#contact" className="btn btn-outline-gold">HIRE ME</a>
+              <a href="#contact" className="btn btn-outline-gold">{t.btnHireMe}</a>
             </div>
           </div>
         </section>
@@ -228,9 +228,9 @@ export default function Home() {
         {/* CONTACT SECTION */}
         <section id="contact" className="section">
           <div className="section-head">
-            <span className="section-subtitle">CONTACT US</span>
-            <h2 className="section-title">How To Contact Us</h2>
-            <p className="section-desc">You can contact us by completing given form. This form will directly send us a mail.</p>
+            <span className="section-subtitle">{t.contactSubtitle}</span>
+            <h2 className="section-title">{t.contactTitle}</h2>
+            <p className="section-desc">{t.contactDesc2}</p>
           </div>
           
           <div className="contact-grid">
