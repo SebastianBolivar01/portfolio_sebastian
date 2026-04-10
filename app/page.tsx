@@ -236,7 +236,7 @@ export default function Home() {
           <div className="contact-grid">
             <a href="tel:+573000000000" className="contact-item">
               <span className="contact-icon">📞</span>
-              +57 300 000 0000, +57 301 000 0000
+              +57 321 726 3018, +57 316 055 5707
             </a>
             <a href="mailto:tu@email.com" className="contact-item">
               <span className="contact-icon">✉️</span>
