@@ -240,7 +240,7 @@ export default function Home() {
             </a>
             <a href="mailto:tu@email.com" className="contact-item">
               <span className="contact-icon">✉️</span>
-              tu@email.business@gmail.com
+              bolivarsebas9@gmail.com
             </a>
             <a href="https://linkedin.com/in/tu-usuario" target="_blank" className="contact-item">
               <span className="contact-icon">🌐</span>
