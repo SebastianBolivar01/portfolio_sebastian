@@ -14,7 +14,7 @@ export default function Home() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
-    
+
     const savedLang = localStorage.getItem('lang') as Lang;
     if (savedLang && translations[savedLang]) {
       setLang(savedLang);
@@ -40,20 +40,20 @@ export default function Home() {
     <>
       <header className="nav-header">
         <div className="nav-container">
-          <a href="#" className="nav-logo">KA<span className="dot">.</span></a>
-          
+          <a href="#" className="nav-logo">SB<span className="dot">.</span></a>
+
           <nav className="nav-links">
             <a href="#">{t.navHome}</a>
             <a href="#services">{t.navServices}</a>
             <a href="#portfolios">{t.navPortfolios}</a>
             <a href="#freelance">{t.navFreelance}</a>
             <a href="#contact">{t.navContact}</a>
-            
+
             {mounted && (
               <>
-                <button 
-                  onClick={toggleTheme} 
-                  className="theme-toggle" 
+                <button
+                  onClick={toggleTheme}
+                  className="theme-toggle"
                   aria-label="Toggle Theme"
                   title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                 >
@@ -75,11 +75,11 @@ export default function Home() {
         {/* HERO SECTION */}
         <section className="hero">
           <div className="hero-col hero-col-left">
-            <h1 className="hero-main-title">Sebastian<br/>Bolivar<span className="dot">.</span></h1>
-            <p className="hero-social-text">Instagram | Facebook<br/>WhatsApp | Telegram.</p>
+            <h1 className="hero-main-title">Sebastian<br />Bolivar<span className="dot">.</span></h1>
+            <p className="hero-social-text">Instagram | Facebook<br />WhatsApp | Telegram.</p>
             <a href="#contact" className="btn btn-outline-gold">{t.btnContact}</a>
           </div>
-          
+
           <div className="hero-col hero-col-center">
             <div className="hero-image-box" title="Place your image at /profile.jpg">
               <div className="hero-image-circle"></div>
@@ -103,28 +103,28 @@ export default function Home() {
             <h2 className="section-title">{t.servicesTitle}</h2>
             <p className="section-desc">{t.servicesDesc}</p>
           </div>
-          
+
           <div className="services-grid">
             <div className="service-card">
               <span className="service-icon"><i className="devicon-nextjs-plain"></i></span>
-              <span className="service-title" dangerouslySetInnerHTML={{__html: t.service1.replace(' ', '<br/>')}}></span>
+              <span className="service-title" dangerouslySetInnerHTML={{ __html: t.service1.replace(' ', '<br/>') }}></span>
             </div>
             <div className="service-card">
               <span className="service-icon"><i className="devicon-react-original"></i></span>
-              <span className="service-title" dangerouslySetInnerHTML={{__html: t.service2.replace(' ', '<br/>')}}></span>
+              <span className="service-title" dangerouslySetInnerHTML={{ __html: t.service2.replace(' ', '<br/>') }}></span>
             </div>
             <div className="service-card">
               <span className="service-icon"><i className="devicon-python-plain"></i></span>
-              <span className="service-title" dangerouslySetInnerHTML={{__html: t.service3.replace(' ', '<br/>')}}></span>
+              <span className="service-title" dangerouslySetInnerHTML={{ __html: t.service3.replace(' ', '<br/>') }}></span>
             </div>
             <div className="service-card">
               <span className="service-icon"><i className="devicon-figma-plain"></i></span>
-              <span className="service-title" dangerouslySetInnerHTML={{__html: t.service4.replace(' ', '<br/>')}}></span>
+              <span className="service-title" dangerouslySetInnerHTML={{ __html: t.service4.replace(' ', '<br/>') }}></span>
             </div>
           </div>
-          
-          <div style={{textAlign: 'center', marginTop: '50px'}}>
-             <a href="#contact" className="btn btn-outline-gold">{t.btnBuyService}</a>
+
+          <div style={{ textAlign: 'center', marginTop: '50px' }}>
+            <a href="#contact" className="btn btn-outline-gold">{t.btnBuyService}</a>
           </div>
         </section>
 
@@ -177,7 +177,7 @@ export default function Home() {
                 <a href="https://github.com/SebastianBolivar01/checkout" target="_blank" className="portfolio-link">{t.sourceCode}</a>
               </div>
             </div>
-            
+
             {/* Project 5 */}
             <div className="portfolio-card">
               <div className="portfolio-image">🚀</div>
@@ -208,7 +208,7 @@ export default function Home() {
             <h2 className="section-title">{t.freelanceTitle}</h2>
             <p className="section-desc">{t.freelanceDesc}</p>
           </div>
-          
+
           <div className="freelance-bars">
             <div className="freelance-item">
               <h3 className="freelance-title">FIVERR</h3>
@@ -232,7 +232,7 @@ export default function Home() {
             <h2 className="section-title">{t.contactTitle}</h2>
             <p className="section-desc">{t.contactDesc2}</p>
           </div>
-          
+
           <div className="contact-grid">
             <a href="tel:+573000000000" className="contact-item">
               <span className="contact-icon">📞</span>
