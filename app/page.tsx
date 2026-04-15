@@ -5,6 +5,7 @@ import "./globals.css";
 import { translations, Lang } from "./i18n";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Services from "./components/Services";
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>('en');
@@ -51,38 +52,7 @@ export default function Home() {
 
       <main className="container">
         <Hero t={t} />
-
-        {/* SERVICES SECTION */}
-        <section id="services" className="section-dark">
-          <div className="section-head">
-            <span className="section-subtitle">{t.servicesSubtitle}</span>
-            <h2 className="section-title">{t.servicesTitle}</h2>
-            <p className="section-desc">{t.servicesDesc}</p>
-          </div>
-
-          <div className="services-grid">
-            <div className="service-card">
-              <span className="service-icon"><i className="devicon-nextjs-plain"></i></span>
-              <span className="service-title" dangerouslySetInnerHTML={{ __html: t.service1.replace(' ', '<br/>') }}></span>
-            </div>
-            <div className="service-card">
-              <span className="service-icon"><i className="devicon-react-original"></i></span>
-              <span className="service-title" dangerouslySetInnerHTML={{ __html: t.service2.replace(' ', '<br/>') }}></span>
-            </div>
-            <div className="service-card">
-              <span className="service-icon"><i className="devicon-python-plain"></i></span>
-              <span className="service-title" dangerouslySetInnerHTML={{ __html: t.service3.replace(' ', '<br/>') }}></span>
-            </div>
-            <div className="service-card">
-              <span className="service-icon"><i className="devicon-figma-plain"></i></span>
-              <span className="service-title" dangerouslySetInnerHTML={{ __html: t.service4.replace(' ', '<br/>') }}></span>
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <a href="#contact" className="btn btn-outline-gold">{t.btnBuyService}</a>
-          </div>
-        </section>
+        <Services t={t} />
 
         {/* PORTFOLIOS SECTION */}
         <section id="portfolios" className="section">
