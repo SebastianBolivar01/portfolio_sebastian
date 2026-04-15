@@ -1,4 +1,4 @@
-import { TranslationSchema, Lang } from "./app/types";
+import { TranslationSchema, Lang } from "./types";
 
 export type { Lang };
 
