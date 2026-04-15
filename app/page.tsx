@@ -8,6 +8,7 @@ import Portfolio from "./components/Portfolio";
 import Freelance from "./components/Freelance";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 import { useTheme } from "./hooks/useTheme";
 import { useLanguage } from "./hooks/useLanguage";
 
@@ -35,6 +36,7 @@ export default function Home() {
       </main>
 
       <Footer text={t.footerText} />
+      <ScrollToTop />
     </>
   );
 }
