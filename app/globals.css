@@ -17,6 +17,11 @@
   
   --transition: all 0.25s ease;
   --nav-bg: rgba(49, 51, 59, 0.95);
+  
+  /* Aurora Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --aurora-glow: rgba(245, 199, 30, 0.15);
 }
 
 [data-theme="light"] {
