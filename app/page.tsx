@@ -6,6 +6,7 @@ import { translations, Lang } from "./i18n";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
+import Portfolio from "./components/Portfolio";
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>('en');
@@ -53,79 +54,7 @@ export default function Home() {
       <main className="container">
         <Hero t={t} />
         <Services t={t} />
-
-        {/* PORTFOLIOS SECTION */}
-        <section id="portfolios" className="section">
-          <div className="section-head">
-            <span className="section-subtitle">{t.portfolioSubtitle}</span>
-            <h2 className="section-title">{t.portfolioTitle}</h2>
-            <p className="section-desc">{t.portfolioDesc}</p>
-            <div className="section-divider"></div>
-          </div>
-
-          <div className="portfolio-grid">
-            {/* Project 1 */}
-            <div className="portfolio-card">
-              <div className="portfolio-image">📊</div>
-              <div className="portfolio-info">
-                <h3 className="portfolio-title">{t.proj1Title}</h3>
-                <p className="portfolio-desc">{t.proj1Desc}</p>
-                <a href="https://github.com/SebastianBolivar01/dashboard" target="_blank" className="portfolio-link">{t.sourceCode}</a>
-              </div>
-            </div>
-
-            {/* Project 2 */}
-            <div className="portfolio-card">
-              <div className="portfolio-image">🎵</div>
-              <div className="portfolio-info">
-                <h3 className="portfolio-title">{t.proj2Title}</h3>
-                <p className="portfolio-desc">{t.proj2Desc}</p>
-                <a href="https://github.com/SebastianBolivar01/Reproductor-Musica" target="_blank" className="portfolio-link">{t.sourceCode}</a>
-              </div>
-            </div>
-
-            {/* Project 3 */}
-            <div className="portfolio-card">
-              <div className="portfolio-image">⚔️</div>
-              <div className="portfolio-info">
-                <h3 className="portfolio-title">{t.proj3Title}</h3>
-                <p className="portfolio-desc">{t.proj3Desc}</p>
-                <a href="https://github.com/SebastianBolivar01/patron-decorator" target="_blank" className="portfolio-link">{t.sourceCode}</a>
-              </div>
-            </div>
-
-            {/* Project 4 */}
-            <div className="portfolio-card">
-              <div className="portfolio-image">💳</div>
-              <div className="portfolio-info">
-                <h3 className="portfolio-title">{t.proj4Title}</h3>
-                <p className="portfolio-desc">{t.proj4Desc}</p>
-                <a href="https://github.com/SebastianBolivar01/checkout" target="_blank" className="portfolio-link">{t.sourceCode}</a>
-              </div>
-            </div>
-
-            {/* Project 5 */}
-            <div className="portfolio-card">
-              <div className="portfolio-image">🚀</div>
-              <div className="portfolio-info">
-                <h3 className="portfolio-title">{t.proj5Title}</h3>
-                <p className="portfolio-desc">{t.proj5Desc}</p>
-                <a href="https://github.com/SebastianBolivar01/landing_page" target="_blank" className="portfolio-link">{t.sourceCode}</a>
-              </div>
-            </div>
-
-            {/* Project 6 */}
-            <div className="portfolio-card">
-              <div className="portfolio-image">🐍</div>
-              <div className="portfolio-info">
-                <h3 className="portfolio-title">{t.proj6Title}</h3>
-                <p className="portfolio-desc">{t.proj6Desc}</p>
-                <a href="https://github.com/SebastianBolivar01/ejercicioDjango" target="_blank" className="portfolio-link">{t.sourceCode}</a>
-              </div>
-            </div>
-          </div>
-          <div className="section-divider"></div>
-        </section>
+        <Portfolio t={t} />
 
         {/* FREELANCE SECTION */}
         <section id="freelance" className="section-dark">
