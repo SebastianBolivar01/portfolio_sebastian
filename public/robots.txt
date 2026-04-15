@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sebastian-portfolio.vercel.app/sitemap.xml
