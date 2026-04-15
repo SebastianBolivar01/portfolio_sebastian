@@ -13,8 +13,16 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Sebastian | Software Developer",
-  description: "Portfolio of Sebastian, a Full-Stack Software Developer.",
+  title: "Sebastian Bolivar | Software Engineer & Creative Developer",
+  description: "Explore the portfolio of Sebastian Bolivar, a Full-Stack Software Developer creating modern, scalable, and beautiful digital experiences.",
+  keywords: ["Software Engineer", "Full-Stack Developer", "Next.js", "Portfolio", "Web Development"],
+  authors: [{ name: "Sebastian Bolivar" }],
+  openGraph: {
+    title: "Sebastian Bolivar | Portfolio",
+    description: "Full-Stack Developer portfolio showcasing modern web projects.",
+    type: "website",
+    locale: "en_US",
+  },
 };
 
 export default function RootLayout({
