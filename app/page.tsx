@@ -7,6 +7,9 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
 import Portfolio from "./components/Portfolio";
+import Freelance from "./components/Freelance";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>('en');
@@ -55,63 +58,11 @@ export default function Home() {
         <Hero t={t} />
         <Services t={t} />
         <Portfolio t={t} />
-
-        {/* FREELANCE SECTION */}
-        <section id="freelance" className="section-dark">
-          <div className="section-head">
-            <span className="section-subtitle">{t.freelanceSubtitle}</span>
-            <h2 className="section-title">{t.freelanceTitle}</h2>
-            <p className="section-desc">{t.freelanceDesc}</p>
-          </div>
-
-          <div className="freelance-bars">
-            <div className="freelance-item">
-              <h3 className="freelance-title">FIVERR</h3>
-              <a href="#contact" className="btn btn-outline-gold">{t.btnHireMe}</a>
-            </div>
-            <div className="freelance-item">
-              <h3 className="freelance-title">UPWORK</h3>
-              <a href="#contact" className="btn btn-outline-gold">{t.btnHireMe}</a>
-            </div>
-            <div className="freelance-item">
-              <h3 className="freelance-title">GURU</h3>
-              <a href="#contact" className="btn btn-outline-gold">{t.btnHireMe}</a>
-            </div>
-          </div>
-        </section>
-
-        {/* CONTACT SECTION */}
-        <section id="contact" className="section">
-          <div className="section-head">
-            <span className="section-subtitle">{t.contactSubtitle}</span>
-            <h2 className="section-title">{t.contactTitle}</h2>
-            <p className="section-desc">{t.contactDesc2}</p>
-          </div>
-
-          <div className="contact-grid">
-            <a href="tel:+573000000000" className="contact-item">
-              <span className="contact-icon">📞</span>
-              +57 321 726 3018, +57 316 055 5707
-            </a>
-            <a href="mailto:tu@email.com" className="contact-item">
-              <span className="contact-icon">✉️</span>
-              bolivarsebas9@gmail.com
-            </a>
-            <a href="https://linkedin.com/in/tu-usuario" target="_blank" className="contact-item">
-              <span className="contact-icon">🌐</span>
-              www.linkedin.com/in/sebastian
-            </a>
-            <a href="https://github.com/SebastianBolivar01" target="_blank" className="contact-item">
-              <span className="contact-icon">💻</span>
-              www.github.com/SebastianBolivar01
-            </a>
-          </div>
-        </section>
+        <Freelance t={t} />
+        <Contact t={t} />
       </main>
 
-      <footer>
-        {t.footerText}
-      </footer>
+      <Footer text={t.footerText} />
     </>
   );
 }
