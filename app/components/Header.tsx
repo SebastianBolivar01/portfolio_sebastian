@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Lang } from "../i18n";
 
 interface HeaderProps {
@@ -19,18 +20,24 @@ export default function Header({
   toggleTheme, 
   handleLangChange 
 }: HeaderProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   return (
     <header className="nav-header">
       <div className="nav-container">
         <a href="#" className="nav-logo">SB<span className="dot">.</span></a>
 
-        <nav className="nav-links">
-          <a href="#">{t.navHome}</a>
-          <a href="#services">{t.navServices}</a>
-          <a href="#portfolios">{t.navPortfolios}</a>
-          <a href="#freelance">{t.navFreelance}</a>
-          <a href="#contact">{t.navContact}</a>
+        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+          <a href="#" onClick={() => setIsMenuOpen(false)}>{t.navHome}</a>
+          <a href="#services" onClick={() => setIsMenuOpen(false)}>{t.navServices}</a>
+          <a href="#portfolios" onClick={() => setIsMenuOpen(false)}>{t.navPortfolios}</a>
+          <a href="#freelance" onClick={() => setIsMenuOpen(false)}>{t.navFreelance}</a>
+          <a href="#contact" onClick={() => setIsMenuOpen(false)}>{t.navContact}</a>
+        </div>
 
+        <div className="nav-actions">
           {mounted && (
             <>
               <button
@@ -49,7 +56,10 @@ export default function Header({
               </select>
             </>
           )}
-        </nav>
+          <button className="burger-menu" onClick={toggleMenu} aria-label="Toggle Menu">
+            {isMenuOpen ? '✕' : '☰'}
+          </button>
+        </div>
       </div>
     </header>
   );

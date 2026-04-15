@@ -182,8 +182,21 @@ h1, h2, h3, h4, .title-font { font-family: var(--font-outfit), sans-serif; }
 /* Footer */
 footer { text-align: center; padding: 30px; font-size: 0.85rem; color: var(--text-muted); background: var(--bg-secondary); }
 
+.nav-actions { display: flex; align-items: center; gap: 16px; }
+.burger-menu { display: none; background: transparent; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; }
+
 /* Responsive adjustments */
 @media (max-width: 900px) {
+  .burger-menu { display: block; }
+  .nav-links {
+    position: fixed; top: 0; right: -100%; width: 250px; height: 100vh;
+    background: var(--nav-bg); backdrop-filter: blur(10px);
+    flex-direction: column; justify-content: center; align-items: center;
+    transition: 0.3s ease; z-index: 99;
+  }
+  .nav-links.active { right: 0; }
+  .nav-links a { display: block; font-size: 1.2rem; }
+  
   .hero { flex-direction: column; text-align: center; padding-top: 140px; gap: 50px; justify-content:flex-start;}
   .hero-col { align-items: center !important; }
   .hero-col-right { max-width: 100%; text-align:center; }
