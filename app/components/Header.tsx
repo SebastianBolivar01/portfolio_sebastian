@@ -12,13 +12,13 @@ interface HeaderProps {
   handleLangChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export default function Header({ 
-  t, 
-  mounted, 
-  theme, 
-  lang, 
-  toggleTheme, 
-  handleLangChange 
+export default function Header({
+  t,
+  mounted,
+  theme,
+  lang,
+  toggleTheme,
+  handleLangChange
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -33,7 +33,7 @@ export default function Header({
           <a href="#" onClick={() => setIsMenuOpen(false)}>{t.navHome}</a>
           <a href="#services" onClick={() => setIsMenuOpen(false)}>{t.navServices}</a>
           <a href="#portfolios" onClick={() => setIsMenuOpen(false)}>{t.navPortfolios}</a>
-          <a href="#freelance" onClick={() => setIsMenuOpen(false)}>{t.navFreelance}</a>
+          <a href="#testimonials" onClick={() => setIsMenuOpen(false)}>{t.navFreelance}</a>
           <a href="#contact" onClick={() => setIsMenuOpen(false)}>{t.navContact}</a>
         </div>
 
