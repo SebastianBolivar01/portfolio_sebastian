@@ -3,9 +3,11 @@
 import "./globals.css";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import About from "./components/About";
 import Services from "./components/Services";
+import Experience from "./components/Experience";
 import Portfolio from "./components/Portfolio";
-import Testimonials from "./components/Testimonials"; // Replaced Freelance
+import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -27,9 +29,11 @@ export default function Home() {
         handleLangChange={handleLangChange} 
       />
 
-      <main className="container">
+      <main>
         <Hero t={t} />
+        <About t={t} />
         <Services t={t} />
+        <Experience t={t} />
         <Portfolio t={t} />
         <Testimonials t={t} /> 
         <Contact t={t} />

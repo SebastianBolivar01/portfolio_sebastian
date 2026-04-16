@@ -9,16 +9,33 @@ export interface Testimonial {
   rating: number;
 }
 
+export interface ExperienceItem {
+  year: string;
+  title: string;
+  subtitle: string;
+  desc: string;
+}
+
 export interface TranslationSchema {
   navHome: string;
+  navAbout: string;
   navServices: string;
+  navExperience: string;
   navPortfolios: string;
-  navFreelance: string; // Keep for now or remove if certain
+  navTestimonials: string;
   navContact: string;
   btnContact: string;
+  btnCV: string;
   btnBuyService: string;
   btnHireMe: string;
+  btnLiveDemo: string;
   introLabel: string;
+  heroTitleHighlight: string;
+  heroSubtitle: string;
+  aboutSubtitle: string;
+  aboutTitle: string;
+  aboutDesc1: string;
+  aboutDesc2: string;
   servicesSubtitle: string;
   servicesTitle: string;
   servicesDesc: string;
@@ -26,6 +43,12 @@ export interface TranslationSchema {
   service2: string;
   service3: string;
   service4: string;
+  experienceSubtitle: string;
+  experienceTitle: string;
+  eduTitle: string;
+  workTitle: string;
+  education: ExperienceItem[];
+  work: ExperienceItem[];
   portfolioSubtitle: string;
   portfolioTitle: string;
   portfolioDesc: string;
@@ -55,5 +78,6 @@ export interface Project {
   emoji: string;
   title: string;
   desc: string;
-  link: string;
+  github: string;
+  demo?: string;
 }

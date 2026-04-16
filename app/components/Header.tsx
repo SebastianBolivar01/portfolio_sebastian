@@ -31,9 +31,11 @@ export default function Header({
 
         <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <a href="#" onClick={() => setIsMenuOpen(false)}>{t.navHome}</a>
+          <a href="#about" onClick={() => setIsMenuOpen(false)}>{t.navAbout}</a>
           <a href="#services" onClick={() => setIsMenuOpen(false)}>{t.navServices}</a>
+          <a href="#experience" onClick={() => setIsMenuOpen(false)}>{t.navExperience}</a>
           <a href="#portfolios" onClick={() => setIsMenuOpen(false)}>{t.navPortfolios}</a>
-          <a href="#testimonials" onClick={() => setIsMenuOpen(false)}>{t.navFreelance}</a>
+          <a href="#testimonials" onClick={() => setIsMenuOpen(false)}>{t.navTestimonials}</a>
           <a href="#contact" onClick={() => setIsMenuOpen(false)}>{t.navContact}</a>
         </div>
 
