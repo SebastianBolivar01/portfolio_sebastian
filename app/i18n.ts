@@ -27,10 +27,10 @@ export const translations: Record<Lang, TranslationSchema> = {
     introLabel: "INTRODUCTION",
     heroTitleHighlight: "I Design & Build Digital Products",
     heroSubtitle: "Full-Stack Developer focused on creating intuitive, fast, and beautiful digital experiences.",
-    aboutSubtitle: "ACERCA DE MÍ",
+    aboutSubtitle: "ABOUT ME",
     aboutTitle: "Know More About Me",
-    aboutDesc1: "I am a Software Engineering student passionate about developing modern technological solutions. My focus is on creating clean, efficient code and high-impact user interfaces.",
-    aboutDesc2: "I specialize in web environments and I'm constantly learning new tools to bring creative ideas to life. I believe in the power of technology to transform the world.",
+    aboutDesc1: "I am characterized by good adaptation in the work field. I am willing to learn new things with the best attitude.",
+    aboutDesc2: "I stand out for my ability to work as a team and my constant search for technical excellence in software engineering.",
     servicesSubtitle: "SERVICES",
     servicesTitle: "What Am I Providing",
     servicesDesc: "Expert software solutions tailored to your needs. Focused on quality, performance, and modern design.",
@@ -40,15 +40,19 @@ export const translations: Record<Lang, TranslationSchema> = {
     service4: "UI / UX Designing",
     experienceSubtitle: "EXPERIENCE",
     experienceTitle: "Pathway & Milestones",
-    eduTitle: "Academic Education",
+    eduTitle: "Academic Education & Courses",
     workTitle: "Work Experience",
     education: [
-      { year: "2021 - Present", title: "Software Engineering", subtitle: "Universidad Cooperativa de Colombia", desc: "Currently in 5th semester, focusing on software design and architecture." },
-      { year: "2020", title: "Web Basics", subtitle: "Sena", desc: "Introductory course to HTML, CSS, and Javascript." }
+      { year: "Ongoing", title: "Software Engineering", subtitle: "Universidad Cooperativa de Colombia", desc: "Currently pursuing professional degree in software engineering." },
+      { year: "Graduate", title: "Academic Bachelor", subtitle: "Colegio Insuca", desc: "High school academic degree." },
+      { year: "Certification", title: "Diploma in Game Design and Programming", subtitle: "Specialized Course", desc: "Advanced training in game mechanics and development architecture." },
+      { year: "Certification", title: "Machine Learning: Practical Examples", subtitle: "AI for Sustainability", desc: "Practical application of ML models and general use cases." }
     ],
     work: [
-      { year: "2023 - Present", title: "Freelance Developer", subtitle: "Remote", desc: "Building custom websites for small businesses and independent studios." },
-      { year: "2022", title: "IT Assistant", subtitle: "UCC Lab", desc: "Maintenance and support for university computer systems." }
+      { year: "2023 - 2024", title: "Sales Advisor", subtitle: "DC móvil", desc: "Customer service, sales management, and product advisory (01/08/2023 - 25/02/2024)." },
+      { year: "2023", title: "Warehouse Manager", subtitle: "DC móvil", desc: "Inventory control, logistics management, and stock organization (06/03/2023 - 31/07/2023)." },
+      { year: "2021 - 2022", title: "Operational Assistant", subtitle: "MEC BPO S.A.S.", desc: "Process support and operational tasks (15/04/2021 - 31/01/2022)." },
+      { year: "2020 - 2021", title: "Operational Assistant", subtitle: "NetLine Comunicaciones", desc: "Communication systems support and operations (16/12/2020 - 17/01/2021)." }
     ],
     portfolioSubtitle: "PORTFOLIOS",
     portfolioTitle: "My Portfolios Collection",
@@ -115,10 +119,10 @@ export const translations: Record<Lang, TranslationSchema> = {
     introLabel: "INTRODUCCIÓN",
     heroTitleHighlight: "Diseño y Construyo Productos Digitales",
     heroSubtitle: "Desarrollador Full-Stack enfocado en crear experiencias digitales intuitivas, rápidas y hermosas.",
-    aboutSubtitle: "ACERCA DE MÍ",
+    aboutSubtitle: "SOBRE MÍ",
     aboutTitle: "Conoce más sobre mí",
-    aboutDesc1: "Soy estudiante de Ingeniería de Software apasionado por el desarrollo de soluciones tecnológicas modernas. Mi enfoque es crear código limpio, eficiente e interfaces de usuario de alto impacto.",
-    aboutDesc2: "Me especializo en entornos web y estoy en constante aprendizaje de nuevas herramientas para dar vida a ideas creativas. Creo en el poder de la tecnología para transformar el mundo.",
+    aboutDesc1: "Me caracterizo por una buena adaptación en el campo laboral. Estoy dispuesto a aprender nuevas cosas con la mejor actitud.",
+    aboutDesc2: "Me destaco por mi capacidad para trabajar en equipo y mi constante búsqueda de la excelencia técnica en ingeniería de software.",
     servicesSubtitle: "SERVICIOS",
     servicesTitle: "Servicios Que Brindo",
     servicesDesc: "Soluciones de software expertas adaptadas a tus necesidades. Enfocadas en calidad, rendimiento y diseño moderno.",
@@ -128,15 +132,19 @@ export const translations: Record<Lang, TranslationSchema> = {
     service4: "Diseño UI / UX",
     experienceSubtitle: "EXPERIENCIA",
     experienceTitle: "Trayectoria y Logros",
-    eduTitle: "Formación Académica",
+    eduTitle: "Formación Académica y Cursos",
     workTitle: "Experiencia Laboral",
     education: [
-      { year: "2021 - Presente", title: "Ingeniería de Software", subtitle: "Universidad Cooperativa de Colombia", desc: "Actualmente en 5to semestre, enfocado en diseño y arquitectura de software." },
-      { year: "2020", title: "Bases de la Web", subtitle: "Sena", desc: "Curso introductorio a HTML, CSS y Javascript." }
+      { year: "En curso", title: "Ingeniería de Software", subtitle: "Universidad Cooperativa de Colombia", desc: "Estudiante de ingeniería enfocado en desarrollo y arquitectura de sistemas." },
+      { year: "Graduado", title: "Bachiller académico", subtitle: "Colegio Insuca", desc: "Título de educación media académica." },
+      { year: "Certificación", title: "Diplomado en Diseño y programación de videojuegos", subtitle: "Curso Especializado", desc: "Capacitación avanzada en mecánicas de juego y arquitectura de desarrollo." },
+      { year: "Certificación", title: "Machine learning: Ejemplos prácticos", subtitle: "IA para la Sostenibilidad", desc: "Aplicación práctica de modelos de ML y casos de uso general." }
     ],
     work: [
-      { year: "2023 - Presente", title: "Desarrollador Freelance", subtitle: "Remoto", desc: "Construcción de sitios web personalizados para pequeños negocios y estudios independientes." },
-      { year: "2022", title: "Auxiliar IT", subtitle: "Laboratorios UCC", desc: "Mantenimiento y soporte técnico de sistemas académicos." }
+      { year: "2023 - 2024", title: "Asesor Comercial", subtitle: "DC móvil", desc: "Atención al cliente, gestión de ventas y asesoría técnica (01/08/2023 - 25/02/2024)." },
+      { year: "2023", title: "Encargado de Bodega", subtitle: "DC móvil", desc: "Control de inventarios, gestión logística y organización de stock (06/03/2023 - 31/07/2023)." },
+      { year: "2021 - 2022", title: "Auxiliar Operativo", subtitle: "MEC BPO S.A.S.", desc: "Soporte en procesos y tareas operativas dentro de la organización (15/04/2021 - 31/01/2022)." },
+      { year: "2020 - 2021", title: "Auxiliar Operativo", subtitle: "NetLine Comunicaciones", desc: "Apoyo en sistemas de comunicación y operaciones (16/12/2020 - 17/01/2021)." }
     ],
     portfolioSubtitle: "PORTAFOLIOS",
     portfolioTitle: "Colección de Proyectos",
@@ -205,8 +213,8 @@ export const translations: Record<Lang, TranslationSchema> = {
     heroSubtitle: "Sviluppatore Full-Stack focalizzato sulla creazione di esperienze digitali intuitive, veloci e belle.",
     aboutSubtitle: "CHI SONO",
     aboutTitle: "Saperne di più su di me",
-    aboutDesc1: "Sono uno studente di Ingegneria del Software appassionato di sviluppo di soluzioni tecnologiche moderne.",
-    aboutDesc2: "Mi specializzo in ambienti web e apprendo costantemente nuovi strumenti per dare vita a idee creative.",
+    aboutDesc1: "Mi caratterizzo per un buon adattamento in campo lavorativo. Sono disposto a imparare cose nuove con il miglior atteggiamento.",
+    aboutDesc2: "Mi distinguo per la mia capacità di lavorare in squadra e per la mia costante ricerca dell'eccellenza tecnica nell'ingegneria del software.",
     servicesSubtitle: "SERVIZI",
     servicesTitle: "Quello che Offro",
     servicesDesc: "Soluzioni software esperte su misura per le tue esigenze.",
@@ -216,13 +224,19 @@ export const translations: Record<Lang, TranslationSchema> = {
     service4: "Design UI / UX",
     experienceSubtitle: "ESPERIENZA",
     experienceTitle: "Percorso e traguardi",
-    eduTitle: "Educazione Accademica",
+    eduTitle: "Istruzione Accademica e Corsi",
     workTitle: "Esperienza Lavorativa",
     education: [
-      { year: "2021", title: "Software Engineering", subtitle: "UCC", desc: "Studente al 5° semestre." }
+      { year: "In corso", title: "Ingegneria del Software", subtitle: "Universidad Cooperativa de Colombia", desc: "Studente di ingegneria focalizzato sullo sviluppo e l'architettura dei sistemi." },
+      { year: "Diplomato", title: "Bachiller académico", subtitle: "Colegio Insuca", desc: "Titolo di istruzione secondaria accademica." },
+      { year: "Certificato", title: "Diploma in Game Design e Programmazione", subtitle: "Corso Specializzato", desc: "Formazione avanzata in meccaniche di gioco e architettura di sviluppo." },
+      { year: "Certificato", title: "Machine learning: Esempi pratici", subtitle: "AI per la Sostenibilità", desc: "Applicazione pratica di modelli di ML e casi d'uso generali." }
     ],
     work: [
-      { year: "2023", title: "Freelance", subtitle: "Remoto", desc: "Sviluppo web indipendente." }
+      { year: "2023 - 2024", title: "Consulente Commerciale", subtitle: "DC móvil", desc: "Servizio clienti, gestione vendite e consulenza tecnica." },
+      { year: "2023", title: "Responsabile di Magazzino", subtitle: "DC móvil", desc: "Controllo inventario, gestione logistica e organizzazione stock." },
+      { year: "2021 - 2022", title: "Assistente Operativo", subtitle: "MEC BPO S.A.S.", desc: "Supporto ai processi e compiti operativi." },
+      { year: "2020 - 2021", title: "Assistente Operativo", subtitle: "NetLine Comunicaciones", desc: "Supporto ai sistemi di comunicazione e operazioni." }
     ],
     portfolioSubtitle: "PORTAFOGLI",
     portfolioTitle: "Collezione di Progetti",
@@ -287,12 +301,12 @@ export const translations: Record<Lang, TranslationSchema> = {
     btnHireMe: "VER MAIS",
     btnLiveDemo: "LIVE DEMO",
     introLabel: "INTRODUÇÃO",
-    heroTitleHighlight: "Eu projeto e construo produtos digitais",
+    heroTitleHighlight: "Eu projeto e construo produtos digital",
     heroSubtitle: "Desenvolvedor Full-Stack focado na criação de experiências digitais intuitivas, rápidas e bonitas.",
-    aboutSubtitle: "SOBRE MIM",
+    aboutSubtitle: "SOBRE MÍ",
     aboutTitle: "Saiba mais sobre mim",
-    aboutDesc1: "Sou um estudante de Engenharia de Software apaixonado por desenvolver soluções tecnológicas.",
-    aboutDesc2: "Especializo-me em ambientes web e estou em constante aprendizado.",
+    aboutDesc1: "Eu me caracterizo por uma boa adaptação no campo de trabalho. Estou disposto a aprender coisas novas com a melhor atitude.",
+    aboutDesc2: "Destaco-me pela minha capacidade de trabalhar em equipe e pela minha busca constante pela excelência técnica na engenharia de software.",
     servicesSubtitle: "SERVIÇOS",
     servicesTitle: "O Quê Ofereço",
     servicesDesc: "Soluções de software especializadas adaptadas às suas necessidades.",
@@ -302,13 +316,19 @@ export const translations: Record<Lang, TranslationSchema> = {
     service4: "Interface UX / UI",
     experienceSubtitle: "EXPERIÊNCIA",
     experienceTitle: "Caminho e Marcos",
-    eduTitle: "Educação Acadêmica",
+    eduTitle: "Educação Acadêmica e Cursos",
     workTitle: "Experiência de Trabalho",
     education: [
-      { year: "2021", title: "Software Engineering", subtitle: "UCC", desc: "Estudante no 5º semestre." }
+      { year: "Em curso", title: "Engenharia de Software", subtitle: "Universidad Cooperativa de Colombia", desc: "Estudante de engenharia focado em desenvolvimento e arquitetura de sistemas." },
+      { year: "Graduado", title: "Bachiller académico", subtitle: "Colegio Insuca", desc: "Título de educação secundária acadêmica." },
+      { year: "Certificação", title: "Diploma em Game Design e Programação", subtitle: "Curso Especializado", desc: "Treinamento avançado em mecânicas de jogo e arquitetura de desenvolvimento." },
+      { year: "Certificação", title: "Machine learning: Exemplos práticos", subtitle: "IA para Sustentabilidade", desc: "Aplicação prática de modelos de ML e casos de uso gerais." }
     ],
     work: [
-      { year: "2023", title: "Freelance", subtitle: "Remoto", desc: "Desenvolvedor independente." }
+      { year: "2023 - 2024", title: "Consultor Comercial", subtitle: "DC móvil", desc: "Atendimento ao cliente, gestão de vendas e consultoria técnica." },
+      { year: "2023", title: "Gerente de Armazém", subtitle: "DC móvil", desc: "Controle de estoque, gestão logística e organização de estoque." },
+      { year: "2021 - 2022", title: "Assistente Operacional", subtitle: "MEC BPO S.A.S.", desc: "Suporte a processos e tarefas operacionais." },
+      { year: "2020 - 2021", title: "Assistente Operacional", subtitle: "NetLine Comunicaciones", desc: "Suporte em sistemas de comunicação e operações." }
     ],
     portfolioSubtitle: "PORTFÓLIOS",
     portfolioTitle: "Coleção Recente",
@@ -325,7 +345,7 @@ export const translations: Record<Lang, TranslationSchema> = {
         rating: 5
       },
       {
-        text: "Trabalhar com Sebastian foi uma experiência fantástica.",
+        text: "Trabalhar com Sebastian foi uma experiencia fantástica.",
         author: "Sofía Ramírez",
         role: "Diretora",
         location: "Estúdio Criativo Nariño",
