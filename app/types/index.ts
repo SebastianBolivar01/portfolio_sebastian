@@ -1,10 +1,19 @@
 export type Lang = 'en' | 'es' | 'it' | 'pt';
 
+export interface Testimonial {
+  text: string;
+  author: string;
+  role: string;
+  location: string;
+  avatar: string;
+  rating: number;
+}
+
 export interface TranslationSchema {
   navHome: string;
   navServices: string;
   navPortfolios: string;
-  navFreelance: string;
+  navFreelance: string; // Keep for now or remove if certain
   navContact: string;
   btnContact: string;
   btnBuyService: string;
@@ -20,9 +29,9 @@ export interface TranslationSchema {
   portfolioSubtitle: string;
   portfolioTitle: string;
   portfolioDesc: string;
-  freelanceSubtitle: string;
-  freelanceTitle: string;
-  freelanceDesc: string;
+  testimonialSubtitle: string;
+  testimonialTitle: string;
+  testimonials: Testimonial[];
   contactSubtitle: string;
   contactTitle: string;
   contactDesc2: string;
