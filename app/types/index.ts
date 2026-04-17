@@ -16,10 +16,23 @@ export interface ExperienceItem {
   desc: string;
 }
 
+export interface SkillCategory {
+  title: string;
+  skills: string[];
+}
+
+export interface MethodStep {
+  id: string;
+  title: string;
+  desc: string;
+}
+
 export interface TranslationSchema {
   navHome: string;
   navAbout: string;
   navServices: string;
+  navSkills: string;
+  navProcess: string;
   navExperience: string;
   navPortfolios: string;
   navTestimonials: string;
@@ -36,6 +49,9 @@ export interface TranslationSchema {
   aboutTitle: string;
   aboutDesc1: string;
   aboutDesc2: string;
+  skillsSubtitle: string;
+  skillsTitle: string;
+  skillCategories: SkillCategory[];
   servicesSubtitle: string;
   servicesTitle: string;
   servicesDesc: string;
@@ -43,6 +59,9 @@ export interface TranslationSchema {
   service2: string;
   service3: string;
   service4: string;
+  processSubtitle: string;
+  processTitle: string;
+  processSteps: MethodStep[];
   experienceSubtitle: string;
   experienceTitle: string;
   eduTitle: string;

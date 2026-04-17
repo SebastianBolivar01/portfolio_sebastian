@@ -4,7 +4,9 @@ import "./globals.css";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Skills from "./components/Skills";
 import Services from "./components/Services";
+import Methodology from "./components/Methodology";
 import Experience from "./components/Experience";
 import Portfolio from "./components/Portfolio";
 import Testimonials from "./components/Testimonials";
@@ -32,7 +34,9 @@ export default function Home() {
       <main>
         <Hero t={t} />
         <About t={t} />
+        <Skills t={t} />
         <Services t={t} />
+        <Methodology t={t} />
         <Experience t={t} />
         <Portfolio t={t} />
         <Testimonials t={t} /> 
