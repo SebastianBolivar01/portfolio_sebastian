@@ -27,7 +27,32 @@ export default function Header({
   return (
     <header className="nav-header">
       <div className="nav-container">
-        <a href="#" className="nav-logo">SB<span className="dot">.</span></a>
+        <a href="#" className="nav-logo" aria-label="Home">
+          <div className="logo-box">
+            <svg viewBox="0 0 40 40" className="logo-svg">
+              <defs>
+                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="var(--accent-primary)" />
+                  <stop offset="100%" stopColor="#FFF" stopOpacity="0.8" />
+                </linearGradient>
+              </defs>
+              <path 
+                d="M20 2 L37.3 11 L37.3 29 L20 38 L2.7 29 L2.7 11 Z" 
+                className="logo-hexagon"
+                fill="none" 
+                stroke="url(#logoGradient)" 
+                strokeWidth="2"
+              />
+              <text 
+                x="50%" 
+                y="50%" 
+                dominantBaseline="central" 
+                textAnchor="middle" 
+                className="logo-text"
+              >SB</text>
+            </svg>
+          </div>
+        </a>
 
         <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <a href="#" onClick={() => setIsMenuOpen(false)}>{t.navHome}</a>
