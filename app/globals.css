@@ -115,13 +115,36 @@ h1, h2, h3, h4, .title-font { font-family: var(--font-outfit), sans-serif; }
   font-size: 14px;
   letter-spacing: -0.5px;
 }
-.nav-links { display: flex; align-items: center; gap: 16px; min-width: 0; }
-.nav-links a { font-size: 0.75rem; font-weight: 700; font-family: var(--font-outfit); text-transform: uppercase; letter-spacing:0.5px; color: var(--text-primary); text-decoration: none; transition: var(--transition); white-space: nowrap; }
+.nav-links { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.nav-links a { font-size: 0.7rem; font-weight: 700; font-family: var(--font-outfit); text-transform: uppercase; letter-spacing:0.5px; color: var(--text-primary); text-decoration: none; transition: var(--transition); white-space: nowrap; }
 .nav-links a:hover { color: var(--accent-primary); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
 .theme-toggle { background: transparent; border: 1px solid var(--card-border); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-primary); font-size: 1rem; transition: var(--transition);}
 .theme-toggle:hover { color: var(--accent-primary); border-color: var(--accent-primary); }
 .lang-select { background: transparent; border: none; color: var(--text-primary); cursor: pointer; font-size:0.85rem; font-weight: 600; font-family:var(--font-outfit); text-transform: uppercase; letter-spacing: 1px;}
 .lang-select option { background: var(--bg-color); color: var(--text-primary); }
+
+.burger-menu {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 101;
+}
+
+@media (min-width: 1250px) {
+  .nav-links { gap: 24px; }
+  .nav-links a { font-size: 0.8rem; }
+}
 
 /* Hero Section (New 2-Column Layout) */
 .hero {
@@ -663,7 +686,7 @@ h1, h2, h3, h4, .title-font { font-family: var(--font-outfit), sans-serif; }
 }
 
 /* Responsive adjustments */
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
   .burger-menu { display: block; }
   .nav-links {
     position: fixed; top: 0; right: -100%; width: 250px; height: 100vh;
@@ -678,7 +701,7 @@ h1, h2, h3, h4, .title-font { font-family: var(--font-outfit), sans-serif; }
   .hero-col { align-items: center !important; }
   .hero-col-right { max-width: 100%; text-align:center; }
   .hero-social-text { margin-bottom: 0px; text-align:center;}
-  .nav-links a { display: none; }
+  .nav-links a { display: block; /* ensure links are shown inside side menu */ }
 }
 
 
