@@ -15,6 +15,8 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import { useTheme } from "./hooks/useTheme";
 import { useLanguage } from "./hooks/useLanguage";
+import CursorFollower from "./components/CursorFollower";
+import Reveal from "./components/Reveal";
 
 export default function Home() {
   const { theme, mounted, toggleTheme } = useTheme();
@@ -22,6 +24,7 @@ export default function Home() {
 
   return (
     <>
+      <CursorFollower />
       <Header 
         t={t} 
         mounted={mounted} 
@@ -33,14 +36,38 @@ export default function Home() {
 
       <main>
         <Hero t={t} />
-        <About t={t} />
-        <Skills t={t} />
-        <Services t={t} />
-        <Methodology t={t} />
-        <Experience t={t} />
-        <Portfolio t={t} />
-        <Testimonials t={t} /> 
-        <Contact t={t} />
+        
+        <Reveal>
+          <About t={t} />
+        </Reveal>
+
+        <Reveal>
+          <Skills t={t} />
+        </Reveal>
+
+        <Reveal>
+          <Services t={t} />
+        </Reveal>
+
+        <Reveal>
+          <Methodology t={t} />
+        </Reveal>
+
+        <Reveal>
+          <Experience t={t} />
+        </Reveal>
+
+        <Reveal>
+          <Portfolio t={t} />
+        </Reveal>
+
+        <Reveal>
+          <Testimonials t={t} /> 
+        </Reveal>
+
+        <Reveal>
+          <Contact t={t} />
+        </Reveal>
       </main>
 
       <Footer text={t.footerText} />
