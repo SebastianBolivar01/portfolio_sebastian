@@ -26,39 +26,38 @@ const GameOverlay: React.FC<GameOverlayProps> = ({ activeGame, onClose }) => {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.08)_0%,transparent_70%)]" />
       <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,1)]" />
       
-      {/* UI Elements */}
-      <div className="absolute top-8 left-8 right-8 flex justify-between items-center pointer-events-none z-50">
-        <div className="flex flex-col gap-1">
-          <div className="text-blue-500 font-mono text-[10px] tracking-[0.3em] uppercase opacity-50">
-            System Protocol 0421
+      {/* UI Elements - Fixed at top for better visibility */}
+      <div className="absolute top-10 left-10 right-10 flex justify-between items-start pointer-events-none z-[10000]">
+        <div className="flex flex-col gap-2">
+          <div className="text-blue-500 font-mono text-xs tracking-[0.4em] uppercase opacity-60">
+            SYSTEM_OVERRIDE_0421
           </div>
-          <div className="text-white font-mono text-xs tracking-widest uppercase flex items-center gap-2">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            Arcade Link Established
+          <div className="text-white font-mono text-sm tracking-widest uppercase flex items-center gap-3">
+            <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]" />
+            ARCADE_LAYER_ACTIVE
           </div>
         </div>
         <button
           onClick={onClose}
-          className="pointer-events-auto px-6 py-2 bg-white/5 hover:bg-red-600 border border-white/10 hover:border-red-600 text-gray-400 hover:text-white rounded-full transition-all font-mono text-[10px] uppercase tracking-widest z-[100]"
+          className="pointer-events-auto px-8 py-3 bg-red-600/10 hover:bg-red-600 border border-red-600/50 hover:border-red-600 text-red-500 hover:text-white rounded-full transition-all font-mono text-xs uppercase tracking-[0.2em] shadow-lg backdrop-blur-sm"
         >
-          Terminate Process [ESC]
+          [ ESC ] TERMINATE_SESSION
         </button>
       </div>
 
-      {/* Main Container */}
-      <div className="relative w-full h-full flex items-center justify-center p-4">
-        <div className="w-full h-full flex items-center justify-center">
-          {activeGame === "space-invaders" && <SpaceInvaders onClose={onClose} />}
-          {activeGame === "pacman" && <PacMan onClose={onClose} />}
-          {activeGame === "donkey-kong" && <DonkeyKong onClose={onClose} />}
-        </div>
+      {/* Main Game Surface */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {activeGame === "space-invaders" && <SpaceInvaders onClose={onClose} />}
+        {activeGame === "pacman" && <PacMan onClose={onClose} />}
+        {activeGame === "donkey-kong" && <DonkeyKong onClose={onClose} />}
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-        <div className="text-white font-mono text-[9px] tracking-[0.5em] uppercase">
-          Ready Player One • Insert Coin
+      {/* Subtle Footer */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-20 pointer-events-none">
+        <div className="text-white font-mono text-[10px] tracking-[0.6em] uppercase">
+          Neural Link • Ready Player One
         </div>
-        <div className="w-48 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent" />
+        <div className="w-64 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent" />
       </div>
 
       <style jsx>{`
