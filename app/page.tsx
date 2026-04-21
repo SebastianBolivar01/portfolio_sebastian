@@ -27,57 +27,61 @@ export default function Home() {
 
   return (
     <>
-      <CursorFollower />
-      <Header 
-        t={t} 
-        mounted={mounted} 
-        theme={theme} 
-        lang={lang} 
-        toggleTheme={toggleTheme} 
-        handleLangChange={handleLangChange} 
-        onLogoClick={handleLogoClick}
-      />
+      {activeGame ? (
+        <GameOverlay activeGame={activeGame} onClose={closeGame} />
+      ) : (
+        <>
+          <CursorFollower />
+          <Header 
+            t={t} 
+            mounted={mounted} 
+            theme={theme} 
+            lang={lang} 
+            toggleTheme={toggleTheme} 
+            handleLangChange={handleLangChange} 
+            onLogoClick={handleLogoClick}
+          />
 
-      <main>
-        <Hero t={t} />
-        
-        <Reveal>
-          <About t={t} />
-        </Reveal>
+          <main>
+            <Hero t={t} />
+            
+            <Reveal>
+              <About t={t} />
+            </Reveal>
 
-        <Reveal>
-          <Skills t={t} />
-        </Reveal>
+            <Reveal>
+              <Skills t={t} />
+            </Reveal>
 
-        <Reveal>
-          <Services t={t} />
-        </Reveal>
+            <Reveal>
+              <Services t={t} />
+            </Reveal>
 
-        <Reveal>
-          <Methodology t={t} />
-        </Reveal>
+            <Reveal>
+              <Methodology t={t} />
+            </Reveal>
 
-        <Reveal>
-          <Experience t={t} />
-        </Reveal>
+            <Reveal>
+              <Experience t={t} />
+            </Reveal>
 
-        <Reveal>
-          <Portfolio t={t} />
-        </Reveal>
+            <Reveal>
+              <Portfolio t={t} />
+            </Reveal>
 
-        <Reveal>
-          <Testimonials t={t} /> 
-        </Reveal>
+            <Reveal>
+              <Testimonials t={t} /> 
+            </Reveal>
 
-        <Reveal>
-          <Contact t={t} />
-        </Reveal>
-      </main>
+            <Reveal>
+              <Contact t={t} />
+            </Reveal>
+          </main>
 
-      <Footer text={t.footerText} />
-      <ScrollToTop />
-      
-      <GameOverlay activeGame={activeGame} onClose={closeGame} />
+          <Footer text={t.footerText} />
+          <ScrollToTop />
+        </>
+      )}
     </>
   );
 }

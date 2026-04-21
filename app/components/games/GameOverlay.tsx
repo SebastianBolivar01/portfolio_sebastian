@@ -15,19 +15,19 @@ const GameOverlay: React.FC<GameOverlayProps> = ({ activeGame, onClose }) => {
   if (!activeGame) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-4xl p-8 flex flex-col items-center">
-        {/* Close Button */}
+    <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black animate-fade-in overflow-hidden">
+      <div className="relative w-full max-w-5xl h-full p-4 flex flex-col items-center justify-center">
+        {/* Close Button - More prominent for full screen */}
         <button
           onClick={onClose}
-          className="absolute top-0 right-4 p-2 text-gray-400 hover:text-white transition-colors text-2xl"
-          aria-label="Close Game"
+          className="absolute top-8 right-8 px-4 py-2 bg-red-600/20 hover:bg-red-600 border border-red-600 text-white rounded transition-all font-mono text-sm uppercase tracking-wider z-10"
+          aria-label="Exit Game"
         >
-          ✕
+          Exit Game (ESC)
         </button>
 
         {/* Game Container */}
-        <div className="w-full flex justify-center">
+        <div className="flex-1 w-full flex items-center justify-center">
           {activeGame === "space-invaders" && <SpaceInvaders onClose={onClose} />}
           {activeGame === "pacman" && <PacMan onClose={onClose} />}
           {activeGame === "donkey-kong" && <DonkeyKong onClose={onClose} />}

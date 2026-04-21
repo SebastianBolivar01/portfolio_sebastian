@@ -69,6 +69,14 @@ export function useEasterEggs() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [keySequence]);
 
+  useEffect(() => {
+    if (activeGame) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [activeGame]);
+
   return {
     activeGame,
     closeGame,
