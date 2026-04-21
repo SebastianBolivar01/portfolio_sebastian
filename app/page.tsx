@@ -15,12 +15,15 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import { useTheme } from "./hooks/useTheme";
 import { useLanguage } from "./hooks/useLanguage";
+import { useEasterEggs } from "./hooks/useEasterEggs";
 import CursorFollower from "./components/CursorFollower";
 import Reveal from "./components/Reveal";
+import GameOverlay from "./components/games/GameOverlay";
 
 export default function Home() {
   const { theme, mounted, toggleTheme } = useTheme();
   const { lang, t, handleLangChange } = useLanguage();
+  const { activeGame, closeGame, handleLogoClick } = useEasterEggs();
 
   return (
     <>
@@ -32,6 +35,7 @@ export default function Home() {
         lang={lang} 
         toggleTheme={toggleTheme} 
         handleLangChange={handleLangChange} 
+        onLogoClick={handleLogoClick}
       />
 
       <main>
@@ -72,6 +76,8 @@ export default function Home() {
 
       <Footer text={t.footerText} />
       <ScrollToTop />
+      
+      <GameOverlay activeGame={activeGame} onClose={closeGame} />
     </>
   );
 }

@@ -10,6 +10,7 @@ interface HeaderProps {
   lang: Lang;
   toggleTheme: () => void;
   handleLangChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onLogoClick?: () => void;
 }
 
 export default function Header({
@@ -18,16 +19,24 @@ export default function Header({
   theme,
   lang,
   toggleTheme,
-  handleLangChange
+  handleLangChange,
+  onLogoClick
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const handleLogoInternalClick = (e: React.MouseEvent) => {
+    if (onLogoClick) {
+      e.preventDefault();
+      onLogoClick();
+    }
+  };
+
   return (
     <header className="nav-header">
       <div className="nav-container">
-        <a href="#" className="nav-logo" aria-label="Home">
+        <a href="#" className="nav-logo" aria-label="Home" onClick={handleLogoInternalClick}>
           <div className="logo-box">
             <svg viewBox="0 0 40 40" className="logo-svg">
               <defs>
