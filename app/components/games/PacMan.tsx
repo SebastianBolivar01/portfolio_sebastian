@@ -82,7 +82,7 @@ const PacMan: React.FC<PacManProps> = ({ onClose }) => {
       for (let r = 0; r < ROWS; r++) {
         for (let c = 0; c < COLS; c++) {
           if (currentMaze[r][c] === 1) { ctx.fillStyle = "#2222bb"; ctx.fillRect(c * BASE_CELL + 2, r * BASE_CELL + 2, BASE_CELL - 4, BASE_CELL - 4); }
-          else if (currentMaze[r][c] === 2) { ctx.fillStyle = "#ffb8ae"; ctx.beginPath(); ctx.arc(c * BASE_CELL + BASE_SIZE / 2, r * BASE_CELL + BASE_SIZE / 2, 2, 0, Math.PI * 2); ctx.fill(); }
+          else if (currentMaze[r][c] === 2) { ctx.fillStyle = "#ffb8ae"; ctx.beginPath(); ctx.arc(c * BASE_CELL + BASE_CELL / 2, r * BASE_CELL + BASE_CELL / 2, 2, 0, Math.PI * 2); ctx.fill(); }
         }
       }
       ctx.fillStyle = "yellow"; ctx.beginPath(); ctx.arc(player.x + BASE_CELL/2, player.y + BASE_CELL/2, BASE_CELL/2 - 2, 0.2 * Math.PI, 1.8 * Math.PI); ctx.lineTo(player.x + BASE_CELL/2, player.y + BASE_CELL/2); ctx.fill();
