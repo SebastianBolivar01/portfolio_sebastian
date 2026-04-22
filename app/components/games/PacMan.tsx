@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 
 interface PacManProps {
   onClose: () => void;
+  onGameOver?: (score: number) => void;
 }
 
 const PacMan: React.FC<PacManProps> = ({ onClose }) => {
@@ -104,26 +105,32 @@ const PacMan: React.FC<PacManProps> = ({ onClose }) => {
 
       const pr = Math.floor((player.y + BASE_CELL/2) / BASE_CELL);
       const pc = Math.floor((player.x + BASE_CELL/2) / BASE_CELL);
-      if (currentMaze[pr] && currentMaze[pr][pc] === 2) {
-        currentMaze[pr][pc] = 0; score += 10;
-        if (!currentMaze.some(row => row.includes(2))) gameWon = true;
-      }
-
-      ghosts.forEach(g => {
-        if (canMove(g.x, g.y, g.dir.x * 2, g.dir.y * 2, true)) { g.x += g.dir.x * 2; g.y += g.dir.y * 2; }
-        else {
-          const dirs = [{x:1,y:0},{x:-1,y:0},{x:0,y:1},{x:0,y:-1}];
-          const valid = dirs.filter(d => (d.x !== -g.dir.x || d.y !== -g.dir.y) && canMove(g.x, g.y, d.x * 2, d.y * 2, true));
-          if (valid.length > 0) {
-            if (g.type === "chase") {
-              valid.sort((a, b) => Math.hypot((g.x+a.x*20)-player.x, (g.y+a.y*20)-player.y) - Math.hypot((g.x+b.x*20)-player.x, (g.y+b.y*20)-player.y));
-              g.dir = valid[0];
-            } else g.dir = valid[Math.floor(Math.random() * valid.length)];
-          } else g.dir = { x: -g.dir.x, y: -g.dir.y };
+        if (currentMaze[pr] && currentMaze[pr][pc] === 2) {
+          currentMaze[pr][pc] = 0; score += 10;
+          if (!currentMaze.some(row => row.includes(2))) {
+            gameWon = true;
+            if (onGameOver) onGameOver(score + 2000);
+          }
         }
-        if (Math.hypot(g.x - player.x, g.y - player.y) < BASE_CELL * 0.7) gameOver = true;
-      });
-    };
+
+        ghosts.forEach(g => {
+          if (canMove(g.x, g.y, g.dir.x * 2, g.dir.y * 2, true)) { g.x += g.dir.x * 2; g.y += g.dir.y * 2; }
+          else {
+            const dirs = [{x:1,y:0},{x:-1,y:0},{x:0,y:1},{x:0,y:-1}];
+            const valid = dirs.filter(d => (d.x !== -g.dir.x || d.y !== -g.dir.y) && canMove(g.x, g.y, d.x * 2, d.y * 2, true));
+            if (valid.length > 0) {
+              if (g.type === "chase") {
+                valid.sort((a, b) => Math.hypot((g.x+a.x*20)-player.x, (g.y+a.y*20)-player.y) - Math.hypot((g.x+b.x*20)-player.x, (g.y+b.y*20)-player.y));
+                g.dir = valid[0];
+              } else g.dir = valid[Math.floor(Math.random() * valid.length)];
+            } else g.dir = { x: -g.dir.x, y: -g.dir.y };
+          }
+          if (Math.hypot(g.x - player.x, g.y - player.y) < BASE_CELL * 0.7) {
+            gameOver = true;
+            if (onGameOver) onGameOver(score);
+          }
+        });
+      };
 
     const draw = () => {
       ctx.fillStyle = "black"; ctx.fillRect(0, 0, canvas.width, canvas.height);

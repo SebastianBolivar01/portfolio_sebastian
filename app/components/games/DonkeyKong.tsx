@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 
 interface DonkeyKongProps {
   onClose: () => void;
+  onGameOver?: (score: number) => void;
 }
 
 const DonkeyKong: React.FC<DonkeyKongProps> = ({ onClose }) => {
@@ -123,13 +124,19 @@ const DonkeyKong: React.FC<DonkeyKongProps> = ({ onClose }) => {
         if (b.x > 790) { b.vx = -Math.abs(b.vx); b.x = 790; }
         if (b.x < 10) { b.vx = Math.abs(b.vx); b.x = 10; }
 
-        if (Math.hypot(b.x - (player.x + player.w/2), b.y - (player.y + player.h/2)) < b.r + 12) gameOver = true;
+        if (Math.hypot(b.x - (player.x + player.w/2), b.y - (player.y + player.h/2)) < b.r + 12) {
+          gameOver = true;
+          if (onGameOver) onGameOver(score);
+        }
         
         if (b.y > 800) barrels.splice(i, 1);
         if (barrelOnGround && b.y > 650 && (b.x < 20 || b.x > 780)) { barrels.splice(i, 1); score += 100; }
       });
 
-      if (player.y < 110 && Math.abs(player.x + player.w/2 - 400) < 50) gameWon = true;
+      if (player.y < 110 && Math.abs(player.x + player.w/2 - 400) < 50) {
+        gameWon = true;
+        if (onGameOver) onGameOver(score + 1000); // Bonus for winning
+      }
     };
 
     const draw = () => {

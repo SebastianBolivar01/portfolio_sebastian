@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 
 interface SpaceInvadersProps {
   onClose: () => void;
+  onGameOver?: (score: number) => void;
 }
 
 const SpaceInvaders: React.FC<SpaceInvadersProps> = ({ onClose }) => {
