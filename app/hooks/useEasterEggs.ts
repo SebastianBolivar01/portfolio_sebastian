@@ -63,6 +63,13 @@ export function useEasterEggs() {
         setActiveGame("space-invaders");
         setKeySequence([]);
       }
+
+      // Check "pacman"
+      const last6 = newSequence.slice(-6).join("").toLowerCase();
+      if (last6 === "pacman") {
+        setActiveGame("pacman");
+        setKeySequence([]);
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
