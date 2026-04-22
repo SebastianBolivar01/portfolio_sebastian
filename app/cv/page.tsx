@@ -1,10 +1,12 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { translations } from "../i18n";
 import { Lang } from "../types";
 
 export default function CVPage() {
+  const router = useRouter();
   // Using English as default for CV, or could detect lang from URL/State
   const t = translations.en;
   
@@ -16,7 +18,7 @@ export default function CVPage() {
     <div className="cv-wrapper">
       {/* Control Bar (Screen only) */}
       <div className="cv-controls no-print">
-        <button onClick={() => window.history.back()} className="cv-back-btn">
+        <button onClick={() => router.push("/")} className="cv-back-btn">
           ← Back to Portfolio
         </button>
         <button onClick={handlePrint} className="cv-download-btn">

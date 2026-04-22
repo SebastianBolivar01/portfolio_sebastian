@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { cvLink } from "../i18n";
 
 interface HeroProps {
@@ -27,12 +28,12 @@ export default function Hero({ t }: HeroProps) {
 
           <div className="hero-btns">
             <a href="#contact" className="btn btn-primary">{t.btnContact}</a>
-            <a 
+            <Link 
               href={cvLink} 
               className="btn btn-outline-gold"
             >
               {t.btnCV}
-            </a>
+            </Link>
           </div>
         </div>
 
