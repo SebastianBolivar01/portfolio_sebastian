@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Lang } from "../types";
+import { GameType } from "../hooks/useEasterEggs";
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -11,7 +12,7 @@ interface CommandPaletteProps {
   lang: Lang;
   handleLangChange: (lang: Lang) => void;
   toggleTheme: () => void;
-  onLaunchGame: (game: string) => void;
+  onLaunchGame: (game: GameType) => void;
 }
 
 export default function CommandPalette({

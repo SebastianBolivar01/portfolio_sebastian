@@ -7,7 +7,7 @@ interface DonkeyKongProps {
   onGameOver?: (score: number) => void;
 }
 
-const DonkeyKong: React.FC<DonkeyKongProps> = ({ onClose }) => {
+const DonkeyKong: React.FC<DonkeyKongProps> = ({ onClose, onGameOver }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -219,7 +219,7 @@ const DonkeyKong: React.FC<DonkeyKongProps> = ({ onClose }) => {
     window.addEventListener("keyup", handleKeyUp);
     loop();
     return () => { cancelAnimationFrame(animationFrameId); window.removeEventListener("keydown", handleKeyDown); window.removeEventListener("keyup", handleKeyUp); window.removeEventListener('resize', updateCanvasSize); };
-  }, [onClose]);
+  }, [onClose, onGameOver]);
 
   return (
     <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block bg-black cursor-none" />

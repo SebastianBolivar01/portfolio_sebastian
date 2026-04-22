@@ -7,7 +7,7 @@ interface PacManProps {
   onGameOver?: (score: number) => void;
 }
 
-const PacMan: React.FC<PacManProps> = ({ onClose }) => {
+const PacMan: React.FC<PacManProps> = ({ onClose, onGameOver }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -176,7 +176,7 @@ const PacMan: React.FC<PacManProps> = ({ onClose }) => {
     window.addEventListener("keydown", handleKeyDown);
     loop();
     return () => { cancelAnimationFrame(animationFrameId); window.removeEventListener("keydown", handleKeyDown); window.removeEventListener('resize', updateCanvasSize); };
-  }, [onClose]);
+  }, [onClose, onGameOver]);
 
   return (
     <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block bg-black cursor-none" />

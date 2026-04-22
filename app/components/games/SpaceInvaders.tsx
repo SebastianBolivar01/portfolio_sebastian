@@ -7,7 +7,7 @@ interface SpaceInvadersProps {
   onGameOver?: (score: number) => void;
 }
 
-const SpaceInvaders: React.FC<SpaceInvadersProps> = ({ onClose }) => {
+const SpaceInvaders: React.FC<SpaceInvadersProps> = ({ onClose, onGameOver }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -99,7 +99,10 @@ const SpaceInvaders: React.FC<SpaceInvadersProps> = ({ onClose }) => {
       bullets.forEach((b, i) => { b.y -= b.speed; if (b.y < 0) bullets.splice(i, 1); });
       alienBullets.forEach((b, i) => {
         b.y += b.speed; if (b.y > canvas.height) alienBullets.splice(i, 1);
-        if (Math.abs(b.x - player.x) < 30 && Math.abs(b.y - player.y) < 20) gameOver = true;
+        if (Math.abs(b.x - player.x) < 30 && Math.abs(b.y - player.y) < 20) {
+          gameOver = true;
+          if (onGameOver) onGameOver(score);
+        }
       });
 
       alienMoveCounter++;
@@ -108,7 +111,13 @@ const SpaceInvaders: React.FC<SpaceInvadersProps> = ({ onClose }) => {
         aliens.forEach(a => { if (a.alive) { a.x += 20 * alienDirection; if (a.x < 100 || a.x > canvas.width - 100) edge = true; } });
         if (edge) {
           alienDirection *= -1;
-          aliens.forEach(a => { a.y += 30; if (a.y > player.y - 50) gameOver = true; });
+          aliens.forEach(a => { 
+            a.y += 30; 
+            if (a.y > player.y - 50) {
+              gameOver = true;
+              if (onGameOver) onGameOver(score);
+            }
+          });
           alienStepTime = Math.max(5, alienStepTime - 1);
         }
         alienMoveCounter = 0;
@@ -125,7 +134,10 @@ const SpaceInvaders: React.FC<SpaceInvadersProps> = ({ onClose }) => {
         aliens.forEach(a => {
           if (a.alive && Math.abs(b.x - a.x) < 25 && Math.abs(b.y - a.y) < 20) {
             a.alive = false; bullets.splice(bi, 1); score += 100;
-            if (aliens.every(al => !al.alive)) gameWon = true;
+            if (aliens.every(al => !al.alive)) {
+              gameWon = true;
+              if (onGameOver) onGameOver(score + 1000); // Bonus for winning
+            }
           }
         });
       });
@@ -178,7 +190,7 @@ const SpaceInvaders: React.FC<SpaceInvadersProps> = ({ onClose }) => {
     window.addEventListener("keyup", handleKeyUp);
     loop();
     return () => { cancelAnimationFrame(animationFrameId); window.removeEventListener("keydown", handleKeyDown); window.removeEventListener("keyup", handleKeyUp); window.removeEventListener('resize', updateCanvasSize); };
-  }, [onClose]);
+  }, [onClose, onGameOver]);
 
   return (
     <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block bg-black cursor-none" />
