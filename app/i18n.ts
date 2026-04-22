@@ -8,7 +8,7 @@ const sharedAvatars = {
   miguel: "https://i.pravatar.cc/150?u=miguel"
 };
 
-const cvLink = "https://www.canva.com/design/DAF0e0SXo28/bMJA_xaQ_3JBFxqL8Bn5qg/edit";
+const cvLink = "/cv";
 
 export const translations: Record<Lang, TranslationSchema> = {
   en: {

@@ -8,7 +8,7 @@ export default function Contact({ t }: ContactProps) {
   const contactItems = [
     { icon: "📞", text: "+57 321 726 3018", link: "tel:+573217263018" },
     { icon: "✉️", text: "bolivarsebas9@gmail.com", link: "mailto:bolivarsebas9@gmail.com" },
-    { icon: "🌐", text: "www.linkedin.com/in/sebastian", link: "https://linkedin.com/in/tu-usuario" },
+    { icon: "🌐", text: "www.linkedin.com/in/sebastian", link: "https://www.linkedin.com/in/sebastian-bolivar-cabrera-689309405/" },
     { icon: "💻", text: "www.github.com/SebastianBolivar01", link: "https://github.com/SebastianBolivar01" },
   ];
 

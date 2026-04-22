@@ -29,8 +29,6 @@ export default function Hero({ t }: HeroProps) {
             <a href="#contact" className="btn btn-primary">{t.btnContact}</a>
             <a 
               href={cvLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
               className="btn btn-outline-gold"
             >
               {t.btnCV}
