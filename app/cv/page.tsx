@@ -4,9 +4,12 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { translations } from "../i18n";
 import { Lang } from "../types";
+import { useTheme } from "../hooks/useTheme";
 
 export default function CVPage() {
   const router = useRouter();
+  const { theme, toggleTheme, mounted } = useTheme();
+  
   // Using English as default for CV, or could detect lang from URL/State
   const t = translations.en;
   
@@ -14,16 +17,25 @@ export default function CVPage() {
     window.print();
   };
 
+  if (!mounted) return null;
+
   return (
-    <div className="cv-wrapper">
+    <div className="cv-wrapper" data-theme={theme}>
       {/* Control Bar (Screen only) */}
       <div className="cv-controls no-print">
-        <button onClick={() => router.push("/")} className="cv-back-btn">
-          ← Back to Portfolio
-        </button>
-        <button onClick={handlePrint} className="cv-download-btn">
-          Download as PDF
-        </button>
+        <div className="cv-controls-left">
+          <button onClick={() => router.push("/")} className="cv-back-btn">
+            ← Back to Portfolio
+          </button>
+        </div>
+        <div className="cv-controls-right">
+          <button onClick={toggleTheme} className="cv-theme-toggle">
+            {theme === "dark" ? "☀️" : "🌙"}
+          </button>
+          <button onClick={handlePrint} className="cv-download-btn">
+            Download as PDF
+          </button>
+        </div>
       </div>
 
       {/* Main CV Document */}
@@ -170,13 +182,14 @@ export default function CVPage() {
       <style jsx>{`
         .cv-wrapper {
           min-height: 100vh;
-          background: #1a1a1a;
+          background: var(--bg-color);
           padding: 40px 20px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          color: white;
+          color: var(--text-primary);
           font-family: 'Inter', sans-serif;
+          transition: background 0.3s ease;
         }
 
         .cv-controls {
@@ -184,43 +197,62 @@ export default function CVPage() {
           max-width: 900px;
           display: flex;
           justify-content: space-between;
+          align-items: center;
           margin-bottom: 20px;
         }
 
-        .cv-back-btn, .cv-download-btn {
+        .cv-controls-right {
+          display: flex;
+          gap: 12px;
+          align-items: center;
+        }
+
+        .cv-back-btn, .cv-download-btn, .cv-theme-toggle {
           padding: 10px 20px;
           border-radius: 8px;
-          border: 1px solid #f5c71e;
+          border: 1px solid var(--accent-primary);
           background: transparent;
-          color: #f5c71e;
+          color: var(--accent-primary);
           cursor: pointer;
           font-weight: 600;
           transition: 0.3s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .cv-theme-toggle {
+          width: 44px;
+          height: 44px;
+          padding: 0;
+          font-size: 1.2rem;
         }
 
         .cv-download-btn {
-          background: #f5c71e;
-          color: #000;
+          background: var(--accent-primary);
+          color: var(--bg-color);
         }
 
-        .cv-back-btn:hover { background: rgba(245, 199, 30, 0.1); }
-        .cv-download-btn:hover { background: #d4a717; }
+        .cv-back-btn:hover, .cv-theme-toggle:hover { background: var(--aurora-glow); }
+        .cv-download-btn:hover { opacity: 0.8; }
 
         .cv-document {
           width: 100%;
           max-width: 900px;
-          background: #111;
+          background: var(--bg-secondary);
           min-height: 1100px;
           padding: 60px;
-          box-shadow: 0 0 50px rgba(0,0,0,0.5);
+          box-shadow: 0 20px 50px rgba(0,0,0,0.2);
           position: relative;
+          border: 1px solid var(--card-border);
+          transition: all 0.3s ease;
         }
 
         .cv-header {
           display: flex;
           align-items: center;
           gap: 40px;
-          border-bottom: 2px solid #333;
+          border-bottom: 2px solid var(--card-border);
           padding-bottom: 40px;
           margin-bottom: 40px;
         }
@@ -236,7 +268,7 @@ export default function CVPage() {
           height: 100%;
           object-fit: cover;
           border-radius: 50%;
-          border: 4px solid #111;
+          border: 4px solid var(--bg-secondary);
           position: relative;
           z-index: 2;
         }
@@ -244,7 +276,7 @@ export default function CVPage() {
         .cv-pic-ring {
           position: absolute;
           inset: -5px;
-          background: #f5c71e;
+          background: var(--accent-primary);
           border-radius: 50%;
           z-index: 1;
         }
@@ -252,7 +284,7 @@ export default function CVPage() {
         .cv-name {
           font-size: 3rem;
           font-weight: 900;
-          color: #f5c71e;
+          color: var(--accent-primary);
           line-height: 1;
           margin: 0;
         }
@@ -260,14 +292,14 @@ export default function CVPage() {
         .cv-surname {
           font-size: 3rem;
           font-weight: 400;
-          color: white;
+          color: var(--text-primary);
           line-height: 1;
           margin: 0 0 10px 0;
         }
 
         .cv-subtitle {
           font-size: 1rem;
-          color: #888;
+          color: var(--text-muted);
           letter-spacing: 4px;
         }
 
@@ -283,8 +315,8 @@ export default function CVPage() {
 
         .cv-section-title {
           font-size: 1.2rem;
-          color: #f5c71e;
-          border-bottom: 1px solid #333;
+          color: var(--accent-primary);
+          border-bottom: 1px solid var(--card-border);
           padding-bottom: 10px;
           margin-bottom: 20px;
           letter-spacing: 2px;
@@ -300,16 +332,17 @@ export default function CVPage() {
         .cv-icon {
           width: 30px;
           height: 30px;
-          background: #222;
+          background: var(--bg-color);
           display: flex;
           align-items: center;
           justify-content: center;
           border-radius: 50%;
           font-size: 0.8rem;
+          border: 1px solid var(--card-border);
         }
 
-        .cv-label { font-size: 0.7rem; color: #f5c71e; text-transform: uppercase; margin: 0; }
-        .cv-value { font-size: 0.85rem; color: #ccc; margin: 0; }
+        .cv-label { font-size: 0.7rem; color: var(--accent-primary); text-transform: uppercase; margin: 0; }
+        .cv-value { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
 
         .cv-skills-grid {
           display: grid;
@@ -320,15 +353,15 @@ export default function CVPage() {
         .cv-skill-circle {
           width: 60px;
           height: 60px;
-          border: 3px solid #333;
-          border-top-color: #f5c71e;
+          border: 3px solid var(--card-border);
+          border-top-color: var(--accent-primary);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 0.7rem;
           font-weight: 700;
-          color: #f5c71e;
+          color: var(--accent-primary);
         }
 
         .cv-hobbies-grid {
@@ -347,16 +380,16 @@ export default function CVPage() {
           margin-bottom: 5px;
         }
 
-        .cv-hobby-item p { font-size: 0.75rem; color: #888; }
+        .cv-hobby-item p { font-size: 0.75rem; color: var(--text-muted); }
 
         .cv-profile-text {
           font-size: 0.9rem;
           line-height: 1.8;
-          color: #ccc;
+          color: var(--text-secondary);
         }
 
         .cv-timeline {
-          border-left: 1px solid #333;
+          border-left: 1px solid var(--card-border);
           padding-left: 25px;
         }
 
@@ -366,8 +399,8 @@ export default function CVPage() {
         }
 
         .cv-timeline-year {
-          background: #f5c71e;
-          color: black;
+          background: var(--accent-primary);
+          color: var(--bg-color);
           padding: 2px 10px;
           font-size: 0.7rem;
           font-weight: 800;
@@ -376,21 +409,34 @@ export default function CVPage() {
           margin-bottom: 8px;
         }
 
-        .cv-item-title { font-size: 1rem; color: white; margin-bottom: 2px; }
-        .cv-item-subtitle { font-size: 0.8rem; color: #f5c71e; margin-bottom: 10px; }
-        .cv-item-desc { font-size: 0.85rem; color: #888; line-height: 1.5; }
+        .cv-item-title { font-size: 1rem; color: var(--text-primary); margin-bottom: 2px; }
+        .cv-item-subtitle { font-size: 0.8rem; color: var(--accent-primary); margin-bottom: 10px; }
+        .cv-item-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
 
         @media print {
           .no-print { display: none !important; }
-          .cv-wrapper { padding: 0; background: white; }
+          .cv-wrapper { padding: 0; background: white !important; color: black !important; }
           .cv-document { 
             max-width: 100%; 
             box-shadow: none; 
             padding: 40px;
-            background: #111 !important; /* Keep dark theme in PDF */
-            color-adjust: exact;
-            -webkit-print-color-adjust: exact;
+            background: white !important; 
+            color: black !important;
+            border: none;
           }
+          .cv-name, .cv-section-title, .cv-item-subtitle, .cv-label, .cv-skill-circle, .cv-timeline-year { color: #D97706 !important; }
+          .cv-surname, .cv-item-title, .cv-profile-text, .cv-value, .cv-item-desc { color: black !important; }
+          .cv-timeline-year { background: #D97706 !important; color: white !important; }
+          .cv-pic-ring { background: #D97706 !important; }
+          .cv-skill-circle { border-color: #eee !important; border-top-color: #D97706 !important; }
+          .cv-icon { background: #f9f9f9 !important; border-color: #eee !important; }
+        }
+
+        @media (max-width: 768px) {
+          .cv-document { padding: 30px; }
+          .cv-header { flex-direction: column; text-align: center; gap: 20px; }
+          .cv-main-grid { grid-template-columns: 1fr; gap: 40px; }
+          .cv-name, .cv-surname { font-size: 2.2rem; }
         }
       `}</style>
     </div>
