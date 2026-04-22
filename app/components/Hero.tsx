@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { cvLink } from "../i18n";
+import Magnetic from "./Magnetic";
 
 interface HeroProps {
   t: any;
@@ -27,13 +28,17 @@ export default function Hero({ t }: HeroProps) {
           </div>
 
           <div className="hero-btns">
-            <a href="#contact" className="btn btn-primary">{t.btnContact}</a>
-            <Link 
-              href={cvLink} 
-              className="btn btn-outline-gold"
-            >
-              {t.btnCV}
-            </Link>
+            <Magnetic strength={0.2}>
+              <a href="#contact" className="btn btn-primary">{t.btnContact}</a>
+            </Magnetic>
+            <Magnetic strength={0.2}>
+              <Link 
+                href={cvLink} 
+                className="btn btn-outline-gold"
+              >
+                {t.btnCV}
+              </Link>
+            </Magnetic>
           </div>
         </div>
 
