@@ -263,8 +263,23 @@ h1, h2, h3, h4, .title-font { font-family: var(--font-outfit), sans-serif; }
   transform: translateY(-5px) scale(1.02); 
   box-shadow: 0 20px 40px var(--aurora-glow);
 }
-.portfolio-image {
-  height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem; background: var(--bg-secondary);
+.portfolio-image-container {
+  height: 220px;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.portfolio-preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover .portfolio-preview-image {
+  transform: scale(1.1);
 }
 .portfolio-info { padding: 24px; display:flex; flex-direction:column; flex:1;}
 .portfolio-title { font-size: 1.25rem; font-weight: 700; font-family: var(--font-outfit); margin-bottom: 12px; color:var(--text-primary);  border-bottom: 2px solid var(--accent-primary); padding-bottom: 10px; display:inline-block; align-self:flex-start;}

@@ -1,7 +1,7 @@
 "use client";
 
 interface PortfolioCardProps {
-  emoji: string;
+  image: string;
   title: string;
   desc: string;
   github: string;
@@ -11,7 +11,7 @@ interface PortfolioCardProps {
 }
 
 export default function PortfolioCard({ 
-  emoji, 
+  image, 
   title, 
   desc, 
   github, 
@@ -21,7 +21,9 @@ export default function PortfolioCard({
 }: PortfolioCardProps) {
   return (
     <div className="portfolio-card animate-fade-in-up">
-      <div className="portfolio-image">{emoji}</div>
+      <div className="portfolio-image-container">
+        <img src={image} alt={title} className="portfolio-preview-image" />
+      </div>
       <div className="portfolio-info">
         <h3 className="portfolio-title">{title}</h3>
         <p className="portfolio-desc">{desc}</p>

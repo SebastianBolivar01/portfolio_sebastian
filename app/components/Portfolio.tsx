@@ -8,47 +8,47 @@ interface PortfolioProps {
 
 export default function Portfolio({ t }: PortfolioProps) {
   const projects = [
-    { 
-      emoji: "📊", 
-      title: t.proj1Title, 
-      desc: t.proj1Desc, 
-      github: "https://github.com/SebastianBolivar01/dashboard",
-      demo: "https://sebastian-dashboard.vercel.app"
+    {
+      image: "/unishop.png",
+      title: t.proj1Title,
+      desc: t.proj1Desc,
+      github: "https://github.com/Whatfck/UniShop-frontend",
+      demo: "https://uni-shop-frontend.vercel.app/"
     },
-    { 
-      emoji: "🎵", 
-      title: t.proj2Title, 
-      desc: t.proj2Desc, 
-      github: "https://github.com/SebastianBolivar01/Reproductor-Musica",
-      demo: "https://sebastian-music.vercel.app"
+    {
+      image: "/mercadolibre.png",
+      title: t.proj2Title,
+      desc: t.proj2Desc,
+      github: "https://github.com/valeriaucc/mercadolibre-clon/tree/dev",
+      demo: "https://mercadolibre-clon-5.vercel.app/"
     },
-    { 
-      emoji: "⚔️", 
-      title: t.proj3Title, 
-      desc: t.proj3Desc, 
-      github: "https://github.com/SebastianBolivar01/patron-decorator",
-      demo: "https://sebastian-rpg.vercel.app"
+    {
+      image: "/facade.png",
+      title: t.proj3Title,
+      desc: t.proj3Desc,
+      github: "https://github.com/SebastianBolivar01/frontend_facade",
+      demo: "https://frontend-facade.vercel.app/"
     },
-    { 
-      emoji: "💳", 
-      title: t.proj4Title, 
-      desc: t.proj4Desc, 
-      github: "https://github.com/SebastianBolivar01/checkout",
-      demo: "https://sebastian-checkout.vercel.app"
+    {
+      image: "/cicd.png",
+      title: t.proj4Title,
+      desc: t.proj4Desc,
+      github: "https://github.com/SebastianBolivar01/integracion-continua",
+      demo: "https://integracion-continua-t7c1.vercel.app/"
     },
-    { 
-      emoji: "🚀", 
-      title: t.proj5Title, 
-      desc: t.proj5Desc, 
+    {
+      image: "/calculator.png",
+      title: t.proj5Title,
+      desc: t.proj5Desc,
+      github: "https://github.com/SebastianBolivar01/Calculadora17proMax/tree/main/calculo-visual",
+      demo: "https://calculadora17pro-max.vercel.app/"
+    },
+    {
+      image: "/unishop.png", // Fallback for 6th image
+      title: t.proj6Title,
+      desc: t.proj6Desc,
       github: "https://github.com/SebastianBolivar01/landing_page",
-      demo: "https://sebastian-landing.vercel.app"
-    },
-    { 
-      emoji: "🐍", 
-      title: t.proj6Title, 
-      desc: t.proj6Desc, 
-      github: "https://github.com/SebastianBolivar01/ejercicioDjango",
-      demo: "https://sebastian-django.vercel.app"
+      demo: "https://landing-page-blue-three-45.vercel.app/"
     },
   ];
 
@@ -63,14 +63,14 @@ export default function Portfolio({ t }: PortfolioProps) {
 
       <div className="portfolio-grid container">
         {projects.map((proj, idx) => (
-          <PortfolioCard 
-            key={idx} 
-            emoji={proj.emoji} 
-            title={proj.title} 
-            desc={proj.desc} 
-            github={proj.github} 
+          <PortfolioCard
+            key={idx}
+            image={proj.image}
+            title={proj.title}
+            desc={proj.desc}
+            github={proj.github}
             demo={proj.demo}
-            sourceCodeText={t.sourceCode} 
+            sourceCodeText={t.sourceCode}
             liveDemoText={t.btnLiveDemo}
           />
         ))}
