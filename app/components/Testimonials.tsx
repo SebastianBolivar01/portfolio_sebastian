@@ -15,7 +15,6 @@ export default function Testimonials({ t }: TestimonialsProps) {
     <section id="testimonials" className="section-dark">
       <div className="section-head">
         <span className="section-subtitle">{t.testimonialSubtitle}</span>
-        <h2 className="section-title">{t.testimonialTitle}</h2>
       </div>
 
       <div className="testimonials-container container">
