@@ -32,10 +32,11 @@ export default function Reveal({ children, width = "100%" }: RevealProps) {
   return (
     <div 
       ref={ref} 
-      className={`reveal-wrapper ${isVisible ? "revealed" : ""}`}
+      className={`transition-all duration-800 cubic-bezier(0.16, 1, 0.3, 1) ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
       style={{ width }}
     >
       {children}
     </div>
   );
+
 }

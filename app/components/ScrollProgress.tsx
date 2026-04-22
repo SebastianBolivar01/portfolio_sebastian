@@ -40,118 +40,29 @@ export default function ScrollProgress() {
   }, []);
 
   return (
-    <div className="scroll-progress-nav">
-      <div className="progress-track">
-        <div className="progress-bar" style={{ height: `${progress}%` }}></div>
+    <div className="fixed right-[30px] top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-[15px] z-[90]">
+      <div className="w-[2px] h-[300px] bg-white/10 relative rounded-full overflow-hidden">
+        <div 
+          className="absolute top-0 left-0 w-full bg-accent shadow-[0_0_10px_var(--accent-primary)] transition-all duration-100 ease-out" 
+          style={{ height: `${progress}%` }}
+        ></div>
       </div>
       
-      <div className="section-dots">
+      <div className="flex flex-col gap-5">
         {sections.map((section) => (
           <a 
             key={section.id} 
             href={`#${section.id}`}
-            className={`section-dot-wrapper ${activeSection === section.id ? "active" : ""}`}
+            className="group relative flex items-center justify-end no-underline"
             aria-label={section.label}
           >
-            <span className="dot-label">{section.label}</span>
-            <div className="dot-circle"></div>
+            <span className="absolute right-[25px] bg-bg-secondary text-text-primary px-2.5 py-1 rounded border border-white/8 text-[0.7rem] font-bold uppercase tracking-wider opacity-0 translate-x-[10px] transition-all duration-300 pointer-events-none whitespace-nowrap group-hover:opacity-100 group-hover:translate-x-0">
+              {section.label}
+            </span>
+            <div className={`w-2 h-2 rounded-full transition-all duration-300 border border-transparent ${activeSection === section.id ? "bg-accent scale-150 shadow-[0_0_10px_var(--accent-primary)]" : "bg-white/20 group-hover:border-accent group-hover:bg-accent/30"}`}></div>
           </a>
         ))}
       </div>
-
-      <style jsx>{`
-        .scroll-progress-nav {
-          position: fixed;
-          right: 30px;
-          top: 50%;
-          transform: translateY(-50%);
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          z-index: 90;
-        }
-
-        .progress-track {
-          width: 2px;
-          height: 300px;
-          background: rgba(255, 255, 255, 0.1);
-          position: relative;
-          border-radius: 2px;
-          overflow: hidden;
-        }
-
-        .progress-bar {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          background: var(--accent-primary);
-          box-shadow: 0 0 10px var(--accent-primary);
-          transition: height 0.1s ease-out;
-        }
-
-        .section-dots {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .section-dot-wrapper {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          text-decoration: none;
-        }
-
-        .dot-circle {
-          width: 8px;
-          height: 8px;
-          background: rgba(255, 255, 255, 0.2);
-          border-radius: 50%;
-          transition: 0.3s;
-          border: 1px solid transparent;
-        }
-
-        .section-dot-wrapper.active .dot-circle {
-          background: var(--accent-primary);
-          transform: scale(1.5);
-          box-shadow: 0 0 10px var(--accent-primary);
-        }
-
-        .dot-label {
-          position: absolute;
-          right: 25px;
-          background: var(--bg-secondary);
-          color: var(--text-primary);
-          padding: 4px 10px;
-          border-radius: 4px;
-          font-size: 0.7rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          opacity: 0;
-          transform: translateX(10px);
-          transition: 0.3s;
-          pointer-events: none;
-          white-space: nowrap;
-          border: 1px solid var(--card-border);
-        }
-
-        .section-dot-wrapper:hover .dot-label {
-          opacity: 1;
-          transform: translateX(0);
-        }
-
-        .section-dot-wrapper:hover .dot-circle {
-          border-color: var(--accent-primary);
-          background: rgba(245, 199, 30, 0.3);
-        }
-
-        @media (max-width: 1024px) {
-          .scroll-progress-nav { display: none; }
-        }
-      `}</style>
     </div>
   );
 }

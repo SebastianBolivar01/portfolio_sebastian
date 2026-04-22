@@ -37,56 +37,18 @@ export default function CursorFollower() {
   return (
     <>
       <div 
-        className={`cursor-dot ${isVisible ? "visible" : ""} ${isHovering ? "hover" : ""}`}
+        className={`fixed pointer-events-none z-[10001] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent transition-all duration-300 ${isVisible ? "opacity-100" : "opacity-0"} ${isHovering ? "w-1 h-1 opacity-50" : "w-2 h-2"}`}
         style={{ left: `${position.x}px`, top: `${position.y}px` }}
       />
       <div 
-        className={`cursor-aurora ${isVisible ? "visible" : ""} ${isHovering ? "hover" : ""}`}
-        style={{ left: `${position.x}px`, top: `${position.y}px` }}
+        className={`fixed pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2 transition-all duration-500 cubic-bezier(0.23, 1, 0.32, 1) mix-blend-screen dark:mix-blend-screen light:mix-blend-multiply light:opacity-30 ${isVisible ? "opacity-100" : "opacity-0"} ${isHovering ? "w-[450px] h-[450px]" : "w-[300px] h-[300px]"}`}
+        style={{ 
+          left: `${position.x}px`, 
+          top: `${position.y}px`,
+          background: `radial-gradient(circle, var(--aurora-glow) 0%, transparent ${isHovering ? '80%' : '70%'})`
+        }}
       />
-
-      <style jsx global>{`
-        .cursor-dot {
-          width: 8px;
-          height: 8px;
-          background: var(--accent-primary);
-          border-radius: 50%;
-          position: fixed;
-          pointer-events: none;
-          z-index: 10001;
-          transform: translate(-50%, -50%);
-          transition: width 0.3s, height 0.3s, opacity 0.3s;
-          opacity: 0;
-        }
-
-        .cursor-dot.visible { opacity: 1; }
-        .cursor-dot.hover { width: 4px; height: 4px; opacity: 0.5; }
-
-        .cursor-aurora {
-          width: 300px;
-          height: 300px;
-          background: radial-gradient(circle, var(--aurora-glow) 0%, transparent 70%);
-          position: fixed;
-          pointer-events: none;
-          z-index: 10000;
-          transform: translate(-50%, -50%);
-          transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s, width 0.5s, height 0.5s;
-          opacity: 0;
-          mix-blend-mode: screen;
-        }
-
-        .cursor-aurora.visible { opacity: 1; }
-        .cursor-aurora.hover {
-          width: 450px;
-          height: 450px;
-          background: radial-gradient(circle, var(--aurora-glow) 0%, transparent 80%);
-        }
-
-        [data-theme="light"] .cursor-aurora {
-          mix-blend-mode: multiply;
-          opacity: 0.3;
-        }
-      `}</style>
     </>
   );
+
 }

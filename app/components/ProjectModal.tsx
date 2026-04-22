@@ -39,46 +39,65 @@ export default function ProjectModal({ isOpen, onClose, project, t }: ProjectMod
   const modalRoot = document.body;
 
   return createPortal(
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content animate-zoom-in" onClick={e => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>✕</button>
+    <div 
+      className="fixed inset-0 w-screen h-screen bg-black/92 backdrop-blur-[10px] z-[99999] flex items-center justify-center p-5" 
+      onClick={onClose}
+    >
+      <div 
+        className="bg-bg-secondary w-full max-w-[1000px] max-h-[90vh] rounded-[24px] border border-white/8 relative overflow-y-auto shadow-[0_40px_100px_rgba(0,0,0,0.6)] animate-zoom-in" 
+        onClick={e => e.stopPropagation()}
+      >
+        <button 
+          className="absolute top-5 right-5 bg-black/50 border border-white/10 text-white w-10 h-10 rounded-full cursor-pointer z-10 transition-all duration-300 hover:bg-accent hover:text-bg-matte hover:rotate-90" 
+          onClick={onClose}
+        >✕</button>
         
-        <div className="modal-body">
-          <div className="modal-image-container">
-            <img src={project.image} alt={project.title} className="modal-image" />
-            <div className="modal-image-overlay"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr]">
+          <div className="relative h-full min-h-[250px] lg:min-h-[400px]">
+            <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-transparent to-bg-secondary"></div>
           </div>
 
-          <div className="modal-info">
-            <div className="modal-header">
-              <h2 className="modal-title">{project.title}</h2>
-              <div className="modal-tags">
+          <div className="p-8 lg:p-10 flex flex-col gap-6">
+            <div className="flex flex-col gap-3">
+              <h2 className="text-[2rem] font-extrabold text-accent leading-tight">{project.title}</h2>
+              <div className="flex flex-wrap gap-2">
                 {project.tags?.map(tag => (
-                  <span key={tag} className="tag-badge">{tag}</span>
+                  <span key={tag} className="text-[0.7rem] bg-accent/10 text-accent px-3 py-1 rounded-full border border-accent/20 font-bold uppercase tracking-wider">{tag}</span>
                 ))}
               </div>
             </div>
 
-            <p className="modal-desc-main">{project.desc}</p>
+            <p className="text-[1.1rem] text-text-primary leading-[1.6]">{project.desc}</p>
 
-            <div className="modal-details">
-              <div className="detail-section">
-                <h4>🚀 The Challenge</h4>
-                <p>{project.challenge || "Building a high-performance, scalable application with a focus on modern user experience and clean code architecture."}</p>
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-2">
+                <h4 className="text-accent text-[0.9rem] font-bold tracking-wider uppercase">🚀 The Challenge</h4>
+                <p className="text-[0.9rem] text-text-secondary leading-[1.6]">{project.challenge || "Building a high-performance, scalable application with a focus on modern user experience and clean code architecture."}</p>
               </div>
 
-              <div className="detail-section">
-                <h4>💡 The Solution</h4>
-                <p>{project.solution || "Implemented a robust architecture using React/Next.js, optimized for speed and SEO, ensuring seamless integration and responsiveness."}</p>
+              <div className="flex flex-col gap-2">
+                <h4 className="text-accent text-[0.9rem] font-bold tracking-wider uppercase">💡 The Solution</h4>
+                <p className="text-[0.9rem] text-text-secondary leading-[1.6]">{project.solution || "Implemented a robust architecture using React/Next.js, optimized for speed and SEO, ensuring seamless integration and responsiveness."}</p>
               </div>
             </div>
 
-            <div className="modal-actions">
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-outline-gold">
+            <div className="flex gap-4 mt-2">
+              <a 
+                href={project.github} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block px-6 py-2.5 text-[0.8rem] font-semibold font-outfit tracking-wider uppercase transition-all duration-250 rounded-full border border-accent text-accent bg-transparent hover:bg-accent hover:text-bg-matte"
+              >
                 View Repository
               </a>
               {project.demo && (
-                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                <a 
+                  href={project.demo} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-block px-6 py-2.5 text-[0.8rem] font-semibold font-outfit tracking-wider uppercase transition-all duration-250 rounded-full bg-accent text-bg-matte border border-accent hover:bg-transparent hover:text-accent"
+                >
                   Live Demo ↗
                 </a>
               )}
@@ -86,159 +105,6 @@ export default function ProjectModal({ isOpen, onClose, project, t }: ProjectMod
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .modal-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(0, 0, 0, 0.92);
-          backdrop-filter: blur(10px);
-          z-index: 99999;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 20px;
-        }
-
-        .modal-content {
-          background: var(--bg-secondary);
-          width: 100%;
-          max-width: 1000px;
-          max-height: 90vh;
-          border-radius: 24px;
-          border: 1px solid var(--card-border);
-          position: relative;
-          overflow-y: auto;
-          box-shadow: 0 40px 100px rgba(0,0,0,0.6);
-        }
-
-        .modal-close {
-          position: absolute;
-          top: 20px;
-          right: 20px;
-          background: rgba(0,0,0,0.5);
-          border: 1px solid rgba(255,255,255,0.1);
-          color: white;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          cursor: pointer;
-          z-index: 10;
-          transition: 0.3s;
-        }
-
-        .modal-close:hover {
-          background: var(--accent-primary);
-          color: black;
-          transform: rotate(90deg);
-        }
-
-        .modal-body {
-          display: grid;
-          grid-template-columns: 1.2fr 1fr;
-        }
-
-        .modal-image-container {
-          position: relative;
-          height: 100%;
-          min-height: 400px;
-        }
-
-        .modal-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .modal-image-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(to right, transparent, var(--bg-secondary));
-        }
-
-        .modal-info {
-          padding: 40px;
-          display: flex;
-          flex-direction: column;
-          gap: 24px;
-        }
-
-        .modal-title {
-          font-size: 2rem;
-          font-weight: 800;
-          color: var(--accent-primary);
-          margin-bottom: 12px;
-        }
-
-        .modal-tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-        }
-
-        .tag-badge {
-          font-size: 0.7rem;
-          background: rgba(245, 199, 30, 0.1);
-          color: var(--accent-primary);
-          padding: 4px 12px;
-          border-radius: 20px;
-          border: 1px solid rgba(245, 199, 30, 0.2);
-          font-weight: 700;
-          text-transform: uppercase;
-        }
-
-        .modal-desc-main {
-          font-size: 1.1rem;
-          color: var(--text-primary);
-          line-height: 1.6;
-        }
-
-        .modal-details {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .detail-section h4 {
-          color: var(--accent-primary);
-          font-size: 0.9rem;
-          margin-bottom: 8px;
-          letter-spacing: 1px;
-        }
-
-        .detail-section p {
-          font-size: 0.9rem;
-          color: var(--text-secondary);
-          line-height: 1.6;
-        }
-
-        .modal-actions {
-          margin-top: 10px;
-          display: flex;
-          gap: 16px;
-        }
-
-        @keyframes zoomIn {
-          from { opacity: 0; transform: scale(0.9); }
-          to { opacity: 1; transform: scale(1); }
-        }
-
-        .animate-zoom-in {
-          animation: zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @media (max-width: 900px) {
-          .modal-body { grid-template-columns: 1fr; }
-          .modal-image-container { min-height: 250px; }
-          .modal-image-overlay {
-            background: linear-gradient(to bottom, transparent, var(--bg-secondary));
-          }
-          .modal-info { padding: 30px; }
-        }
-      `}</style>
     </div>,
     modalRoot
   );

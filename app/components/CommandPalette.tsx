@@ -83,201 +83,73 @@ export default function CommandPalette({
   if (!isOpen) return null;
 
   return (
-    <div className="cmd-overlay" onClick={onClose}>
-      <div className="cmd-dialog animate-pop-in" onClick={e => e.stopPropagation()}>
-        <div className="cmd-search-box">
-          <span className="cmd-search-icon">🔍</span>
+    <div 
+      className="fixed inset-0 bg-black/80 backdrop-blur-[8px] z-[9999] flex items-start justify-center pt-[15vh]" 
+      onClick={onClose}
+    >
+      <div 
+        className="w-full max-w-[600px] bg-bg-secondary border border-white/8 rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.5)] overflow-hidden animate-pop-in" 
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center px-5 py-4 border-b border-white/8 gap-3">
+          <span className="text-[1.2rem] opacity-50">🔍</span>
           <input 
             ref={inputRef}
             type="text" 
             placeholder="Type a command or search..." 
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="cmd-input"
+            className="flex-1 bg-transparent border-none text-text-primary text-[1.1rem] outline-none font-inherit"
           />
-          <kbd className="cmd-esc-tag">ESC</kbd>
+          <kbd className="text-[0.7rem] bg-bg-matte px-2 py-1 rounded border border-white/8 text-text-muted">ESC</kbd>
         </div>
 
-        <div className="cmd-results">
+        <div className="max-h-[400px] overflow-y-auto p-2">
           {filteredCommands.length > 0 ? (
             filteredCommands.map((cmd, idx) => (
               <div 
                 key={cmd.id} 
-                className={`cmd-item ${idx === selectedIndex ? "active" : ""}`}
+                className={`
+                  flex items-center gap-4 px-4 py-3 rounded-[10px] cursor-pointer transition-all duration-200 group
+                  ${idx === selectedIndex ? "bg-accent text-bg-matte" : ""}
+                `}
                 onMouseEnter={() => setSelectedIndex(idx)}
                 onClick={cmd.action}
               >
-                <span className="cmd-item-icon">{cmd.icon}</span>
-                <div className="cmd-item-info">
-                  <span className="cmd-item-title">{cmd.title}</span>
-                  <span className="cmd-item-cat">{cmd.category}</span>
+                <span className={`
+                  text-[1.4rem] w-10 h-10 flex items-center justify-center bg-bg-matte rounded-lg transition-all duration-200
+                  ${idx === selectedIndex ? "bg-black/20 scale-110" : ""}
+                `}>
+                  {cmd.icon}
+                </span>
+                <div className="flex flex-col flex-1">
+                  <span className="font-semibold text-[0.95rem]">{cmd.title}</span>
+                  <span className={`text-[0.75rem] ${idx === selectedIndex ? "opacity-80" : "opacity-60"}`}>
+                    {cmd.category}
+                  </span>
                 </div>
-                {idx === selectedIndex && <span className="cmd-item-enter">↩</span>}
+                {idx === selectedIndex && <span className="text-[1.2rem] opacity-50">↩</span>}
               </div>
             ))
           ) : (
-            <div className="cmd-no-results">No commands found...</div>
+            <div className="py-10 text-center text-text-muted italic">No commands found...</div>
           )}
         </div>
 
-        <div className="cmd-footer">
-          <div className="cmd-help">
-            <span><kbd>↑↓</kbd> to navigate</span>
-            <span><kbd>Enter</kbd> to select</span>
-            <span><kbd>ESC</kbd> to close</span>
+        <div className="px-5 py-3 bg-bg-matte border-t border-white/8">
+          <div className="flex gap-5 text-[0.7rem] text-text-muted">
+            <span className="flex items-center gap-1">
+              <kbd className="bg-bg-secondary px-1.5 py-0.5 rounded border border-white/8">↑↓</kbd> to navigate
+            </span>
+            <span className="flex items-center gap-1">
+              <kbd className="bg-bg-secondary px-1.5 py-0.5 rounded border border-white/8">Enter</kbd> to select
+            </span>
+            <span className="flex items-center gap-1">
+              <kbd className="bg-bg-secondary px-1.5 py-0.5 rounded border border-white/8">ESC</kbd> to close
+            </span>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .cmd-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.8);
-          backdrop-filter: blur(8px);
-          z-index: 9999;
-          display: flex;
-          align-items: flex-start;
-          justify-content: center;
-          padding-top: 15vh;
-        }
-
-        .cmd-dialog {
-          width: 100%;
-          max-width: 600px;
-          background: var(--bg-secondary);
-          border: 1px solid var(--card-border);
-          border-radius: 16px;
-          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-          overflow: hidden;
-        }
-
-        .cmd-search-box {
-          display: flex;
-          align-items: center;
-          padding: 16px 20px;
-          border-bottom: 1px solid var(--card-border);
-          gap: 12px;
-        }
-
-        .cmd-search-icon { font-size: 1.2rem; opacity: 0.5; }
-
-        .cmd-input {
-          flex: 1;
-          background: transparent;
-          border: none;
-          color: var(--text-primary);
-          font-size: 1.1rem;
-          outline: none;
-          font-family: inherit;
-        }
-
-        .cmd-esc-tag {
-          font-size: 0.7rem;
-          background: var(--bg-color);
-          padding: 4px 8px;
-          border-radius: 4px;
-          border: 1px solid var(--card-border);
-          color: var(--text-muted);
-        }
-
-        .cmd-results {
-          max-height: 400px;
-          overflow-y: auto;
-          padding: 8px;
-        }
-
-        .cmd-item {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          padding: 12px 16px;
-          border-radius: 10px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-
-        .cmd-item.active {
-          background: var(--accent-primary);
-          color: var(--bg-color);
-        }
-
-        .cmd-item-icon {
-          font-size: 1.4rem;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: var(--bg-color);
-          border-radius: 8px;
-          transition: 0.2s;
-        }
-
-        .cmd-item.active .cmd-item-icon {
-          background: rgba(0, 0, 0, 0.2);
-          transform: scale(1.1);
-        }
-
-        .cmd-item-info {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-        }
-
-        .cmd-item-title {
-          font-weight: 600;
-          font-size: 0.95rem;
-        }
-
-        .cmd-item-cat {
-          font-size: 0.75rem;
-          opacity: 0.6;
-        }
-
-        .cmd-item.active .cmd-item-cat { opacity: 0.8; }
-
-        .cmd-item-enter {
-          font-size: 1.2rem;
-          opacity: 0.5;
-        }
-
-        .cmd-no-results {
-          padding: 40px;
-          text-align: center;
-          color: var(--text-muted);
-          font-style: italic;
-        }
-
-        .cmd-footer {
-          padding: 12px 20px;
-          background: var(--bg-color);
-          border-top: 1px solid var(--card-border);
-        }
-
-        .cmd-help {
-          display: flex;
-          gap: 20px;
-          font-size: 0.7rem;
-          color: var(--text-muted);
-        }
-
-        .cmd-help kbd {
-          background: var(--bg-secondary);
-          padding: 2px 6px;
-          border-radius: 4px;
-          border: 1px solid var(--card-border);
-        }
-
-        @keyframes popIn {
-          from { opacity: 0; transform: scale(0.95) translateY(-10px); }
-          to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .animate-pop-in {
-          animation: popIn 0.2s ease-out forwards;
-        }
-      `}</style>
     </div>
   );
 }

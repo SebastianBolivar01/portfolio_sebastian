@@ -31,11 +31,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+    <html lang="en" data-theme="dark" className={`${inter.variable} ${outfit.variable}`}>
+
       <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
       </head>
-      <body>{children}</body>
+      <body className="bg-bg-matte text-text-primary transition-colors duration-300">{children}</body>
+
     </html>
   );
 }

@@ -81,17 +81,17 @@ export default function Portfolio({ t }: PortfolioProps) {
   };
 
   return (
-    <section id="portfolios" className="section">
-      <div className="section-head">
-        <span className="section-subtitle">{t.portfolioSubtitle}</span>
-        <h2 className="section-title">{t.portfolioTitle}</h2>
-        <p className="section-desc">{t.portfolioDesc}</p>
-        <div className="section-divider"></div>
+    <section id="portfolios" className="py-[120px] bg-bg-secondary border-t border-white/8">
+      <div className="text-center max-w-[600px] mx-auto mb-[60px]">
+        <span className="block text-[0.75rem] text-accent font-outfit font-bold uppercase tracking-[2px] mb-2">{t.portfolioSubtitle}</span>
+        <h2 className="text-[2.2rem] font-bold text-text-primary mb-4 font-outfit">{t.portfolioTitle}</h2>
+        <p className="text-[0.9rem] text-text-secondary leading-[1.6]">{t.portfolioDesc}</p>
+        <div className="w-[150px] h-[1px] bg-accent mx-auto my-[60px] opacity-50"></div>
       </div>
 
-      <div className="portfolio-grid container">
+      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((proj, idx) => (
-          <div key={idx} onClick={() => handleOpenModal(proj)} className="portfolio-clickable-item">
+          <div key={idx} onClick={() => handleOpenModal(proj)} className="cursor-pointer">
             <PortfolioCard
               image={proj.image}
               title={proj.title}
@@ -112,13 +112,7 @@ export default function Portfolio({ t }: PortfolioProps) {
         t={t} 
       />
 
-      <div className="section-divider"></div>
-
-      <style jsx>{`
-        .portfolio-clickable-item {
-          cursor: pointer;
-        }
-      `}</style>
+      <div className="w-[150px] h-[1px] bg-accent mx-auto my-[60px] opacity-50"></div>
     </section>
   );
 }

@@ -23,86 +23,24 @@ export default function StatusWidget() {
   }, []);
 
   return (
-    <div className="status-widget animate-fade-in">
-      <div className="status-location">
-        <span className="flag">🇨🇴</span>
+    <div className="inline-flex flex-col sm:flex-row items-center sm:items-center gap-3 bg-bg-secondary border border-white/8 px-4 py-2 rounded-2xl sm:rounded-full text-[0.75rem] font-semibold text-text-secondary shadow-[0_4px_15px_rgba(0,0,0,0.1)] backdrop-blur-[5px] animate-fade-in">
+      <div className="flex items-center gap-1.5">
+        <span className="text-[0.9rem]">🇨🇴</span>
         <span>Based in Colombia</span>
       </div>
-      <div className="status-divider"></div>
-      <div className="status-time">
-        <span className="clock-icon">🕒</span>
+      <div className="hidden sm:block w-[1px] h-3.5 bg-white/8"></div>
+      <div className="flex items-center gap-1.5">
+        <span className="text-[0.9rem]">🕒</span>
         <span>{time}</span>
       </div>
-      <div className="status-divider"></div>
-      <div className="status-availability">
-        <span className="pulse-dot"></span>
+      <div className="hidden sm:block w-[1px] h-3.5 bg-white/8"></div>
+      <div className="flex items-center gap-1.5">
+        <span className="relative w-2 h-2 bg-[#4ade80] rounded-full">
+          <span className="absolute inset-0 bg-[#4ade80] rounded-full animate-ping opacity-75"></span>
+        </span>
         <span>Available for Projects</span>
       </div>
-
-      <style jsx>{`
-        .status-widget {
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          background: var(--bg-secondary);
-          border: 1px solid var(--card-border);
-          padding: 8px 16px;
-          border-radius: 100px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          color: var(--text-secondary);
-          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-          backdrop-filter: blur(5px);
-        }
-
-        .status-location, .status-time, .status-availability {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        .status-divider {
-          width: 1px;
-          height: 14px;
-          background: var(--card-border);
-        }
-
-        .flag, .clock-icon {
-          font-size: 0.9rem;
-        }
-
-        .pulse-dot {
-          width: 8px;
-          height: 8px;
-          background: #4ade80;
-          border-radius: 50%;
-          position: relative;
-        }
-
-        .pulse-dot::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: #4ade80;
-          border-radius: 50%;
-          animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
-        }
-
-        @keyframes pulse-ring {
-          0% { transform: scale(0.7); opacity: 0.5; }
-          80%, 100% { transform: scale(2.5); opacity: 0; }
-        }
-
-        @media (max-width: 600px) {
-          .status-widget {
-            flex-direction: column;
-            border-radius: 16px;
-            padding: 12px;
-            align-items: flex-start;
-          }
-          .status-divider { display: none; }
-        }
-      `}</style>
     </div>
   );
 }
+

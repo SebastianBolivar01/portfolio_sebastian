@@ -30,29 +30,8 @@ export default function ScrollToTop() {
   return (
     <button
       onClick={scrollToTop}
-      className="scroll-to-top"
+      className="fixed bottom-10 right-10 w-[50px] h-[50px] rounded-full bg-accent text-bg-matte border-none cursor-pointer flex items-center justify-center text-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] z-[1000] transition-transform duration-300 hover:scale-110"
       aria-label="Scroll to top"
-      style={{
-        position: "fixed",
-        bottom: "40px",
-        right: "40px",
-        width: "50px",
-        height: "50px",
-        borderRadius: "50%",
-        backgroundColor: "var(--accent-primary)",
-        color: "var(--bg-color)",
-        border: "none",
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: "24px",
-        boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-        zIndex: 1000,
-        transition: "transform 0.3s ease",
-      }}
-      onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
-      onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
     >
       ↑
     </button>

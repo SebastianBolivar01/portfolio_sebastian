@@ -73,202 +73,50 @@ export default function GitHubActivity({ t }: { t: any }) {
   };
 
   if (loading) return (
-    <div className="github-loading">
-      <div className="spinner"></div>
+    <div className="h-[200px] flex items-center justify-center">
+      <div className="w-7.5 h-7.5 border-3 border-white/8 border-t-accent rounded-full animate-spin"></div>
     </div>
   );
 
   if (events.length === 0) return null;
 
   return (
-    <section className="github-section">
-      <div className="container">
-        <div className="github-card animate-fade-in-up">
-          <div className="github-header">
-            <div className="github-title-group">
-              <span className="github-pulse"></span>
-              <h3 className="github-title">Live GitHub Activity</h3>
+    <section className="py-[60px]">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="relative bg-bg-secondary border border-white/8 rounded-[20px] p-8 overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.2)] animate-fade-in-up">
+          {/* Background Glow */}
+          <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,var(--aurora-glow)_0%,transparent_70%)] pointer-events-none opacity-50"></div>
+          
+          <div className="flex justify-between items-center mb-8 relative z-2">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 bg-[#4ade80] rounded-full shadow-[0_0_10px_#4ade80] animate-pulse"></span>
+              <h3 className="text-[1.2rem] font-bold tracking-wider text-text-primary uppercase">Live GitHub Activity</h3>
             </div>
             <a 
               href="https://github.com/SebastianBolivar01" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="github-profile-link"
+              className="text-[0.85rem] text-accent font-semibold no-underline transition-all duration-300 hover:opacity-80 hover:translate-x-1"
             >
               @SebastianBolivar01 ↗
             </a>
           </div>
 
-          <div className="github-events">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 relative z-2">
             {events.map((event) => (
-              <div key={event.id} className="github-event-item">
-                <div className="github-event-icon">{getEventIcon(event.type)}</div>
-                <div className="github-event-info">
-                  <p className="github-event-text">{getEventText(event)}</p>
-                  <span className="github-event-time">{formatTime(event.created_at)}</span>
+              <div key={event.id} className="flex items-center gap-4 p-4 bg-bg-matte rounded-xl border border-white/8 transition-all duration-300 hover:border-accent hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(0,0,0,0.3)]">
+                <div className="text-[1.5rem] min-w-[40px] h-10 flex items-center justify-center bg-bg-secondary rounded-lg">
+                  {getEventIcon(event.type)}
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-[0.85rem] font-bold text-text-primary mb-1 leading-tight">{getEventText(event)}</p>
+                  <span className="text-[0.75rem] text-text-muted">{formatTime(event.created_at)}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .github-section {
-          padding: 60px 0;
-        }
-
-        .github-card {
-          background: var(--bg-secondary);
-          border: 1px solid var(--card-border);
-          border-radius: 20px;
-          padding: 30px;
-          position: relative;
-          overflow: hidden;
-          box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-
-        .github-card::before {
-          content: "";
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(circle, var(--aurora-glow) 0%, transparent 70%);
-          pointer-events: none;
-          opacity: 0.5;
-        }
-
-        .github-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 30px;
-          position: relative;
-          z-index: 2;
-        }
-
-        .github-title-group {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-
-        .github-pulse {
-          width: 8px;
-          height: 8px;
-          background: #4ade80;
-          border-radius: 50%;
-          box-shadow: 0 0 10px #4ade80;
-          animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-          0% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.5); opacity: 0.5; }
-          100% { transform: scale(1); opacity: 1; }
-        }
-
-        .github-title {
-          font-size: 1.2rem;
-          font-weight: 700;
-          letter-spacing: 1px;
-          color: var(--text-primary);
-          margin: 0;
-        }
-
-        .github-profile-link {
-          font-size: 0.85rem;
-          color: var(--accent-primary);
-          text-decoration: none;
-          font-weight: 600;
-          transition: 0.3s;
-        }
-
-        .github-profile-link:hover {
-          opacity: 0.8;
-          transform: translateX(3px);
-        }
-
-        .github-events {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 20px;
-          position: relative;
-          z-index: 2;
-        }
-
-        .github-event-item {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          padding: 15px;
-          background: var(--bg-color);
-          border-radius: 12px;
-          border: 1px solid var(--card-border);
-          transition: 0.3s;
-        }
-
-        .github-event-item:hover {
-          border-color: var(--accent-primary);
-          transform: translateY(-5px);
-          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .github-event-icon {
-          font-size: 1.5rem;
-          min-width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: var(--bg-secondary);
-          border-radius: 10px;
-        }
-
-        .github-event-info {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .github-event-text {
-          font-size: 0.85rem;
-          font-weight: 600;
-          color: var(--text-primary);
-          margin-bottom: 4px;
-          line-height: 1.3;
-        }
-
-        .github-event-time {
-          font-size: 0.75rem;
-          color: var(--text-muted);
-        }
-
-        .github-loading {
-          height: 200px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .spinner {
-          width: 30px;
-          height: 30px;
-          border: 3px solid var(--card-border);
-          border-top-color: var(--accent-primary);
-          border-radius: 50%;
-          animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 768px) {
-          .github-events { grid-template-columns: 1fr; }
-        }
-      `}</style>
     </section>
   );
 }

@@ -75,8 +75,9 @@ export default function Home() {
             onLogoClick={handleLogoClick}
           />
 
-          <main>
+          <main className="bg-bg-matte">
             <Hero t={t} />
+
             
             <Reveal>
               <About t={t} />
