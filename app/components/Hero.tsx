@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { cvLink } from "../i18n";
 import Magnetic from "./Magnetic";
+import StatusWidget from "./StatusWidget";
 
 interface HeroProps {
   t: any;
@@ -15,6 +16,7 @@ export default function Hero({ t }: HeroProps) {
         
         {/* Left Side: Content */}
         <div className="hero-content animate-fade-in-up">
+          <StatusWidget />
           <div className="hero-name-group">
             <h1 className="hero-main-title">Sebastian<br />Bolivar<span className="dot">.</span></h1>
             
@@ -56,6 +58,11 @@ export default function Hero({ t }: HeroProps) {
         </div>
 
       </div>
+      <style jsx>{`
+        .hero-content :global(.status-widget) {
+          margin-bottom: 24px;
+        }
+      `}</style>
     </section>
   );
 }
