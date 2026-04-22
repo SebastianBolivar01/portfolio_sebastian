@@ -11,6 +11,7 @@ interface HeaderProps {
   toggleTheme: () => void;
   handleLangChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   onLogoClick?: () => void;
+  onSearchClick?: () => void;
 }
 
 export default function Header({
@@ -20,7 +21,8 @@ export default function Header({
   lang,
   toggleTheme,
   handleLangChange,
-  onLogoClick
+  onLogoClick,
+  onSearchClick
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -78,6 +80,14 @@ export default function Header({
         <div className="nav-actions">
           {mounted && (
             <>
+              <button 
+                className="search-trigger-btn" 
+                onClick={onSearchClick}
+                title="Command Palette (Ctrl+K)"
+              >
+                <span className="search-icon">🔍</span>
+                <kbd className="search-kbd">⌘K</kbd>
+              </button>
               <button
                 onClick={toggleTheme}
                 className="theme-toggle"

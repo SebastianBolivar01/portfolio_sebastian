@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./globals.css";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -20,18 +20,43 @@ import { useEasterEggs } from "./hooks/useEasterEggs";
 import CursorFollower from "./components/CursorFollower";
 import Reveal from "./components/Reveal";
 import GameOverlay from "./components/games/GameOverlay";
+import CommandPalette from "./components/CommandPalette";
 
 export default function Home() {
   const { theme, mounted, toggleTheme } = useTheme();
   const { lang, t, handleLangChange } = useLanguage();
-  const { activeGame, closeGame, handleLogoClick } = useEasterEggs();
+  const { activeGame, closeGame, handleLogoClick, triggerGame: launchGame } = useEasterEggs();
+  const [isCmdOpen, setIsCmdOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setIsCmdOpen(prev => !prev);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
     <>
+      <CommandPalette 
+        isOpen={isCmdOpen}
+        onClose={() => setIsCmdOpen(false)}
+        t={t}
+        lang={lang}
+        handleLangChange={(l) => {
+          // Wrap handleLangChange to match component's expected signature if needed
+          const e = { target: { value: l } } as any;
+          handleLangChange(e);
+        }}
+        toggleTheme={toggleTheme}
+        onLaunchGame={launchGame}
+      />
       {activeGame ? (
         <GameOverlay activeGame={activeGame} onClose={closeGame} />
       ) : (
@@ -45,6 +70,7 @@ export default function Home() {
             toggleTheme={toggleTheme} 
             handleLangChange={handleLangChange} 
             onLogoClick={handleLogoClick}
+            onSearchClick={() => setIsCmdOpen(true)}
           />
 
           <main>

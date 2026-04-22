@@ -126,6 +126,37 @@ h1, h2, h3, h4, .title-font { font-family: var(--font-outfit), sans-serif; }
   flex-shrink: 0;
 }
 
+.search-trigger-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.search-trigger-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.search-icon { font-size: 0.9rem; }
+
+.search-kbd {
+  font-size: 0.65rem;
+  background: var(--bg-color);
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid var(--card-border);
+  font-family: inherit;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
 .theme-toggle { background: transparent; border: 1px solid var(--card-border); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-primary); font-size: 1rem; transition: var(--transition);}
 .theme-toggle:hover { color: var(--accent-primary); border-color: var(--accent-primary); }
 .lang-select { background: transparent; border: none; color: var(--text-primary); cursor: pointer; font-size:0.85rem; font-weight: 600; font-family:var(--font-outfit); text-transform: uppercase; letter-spacing: 1px;}
@@ -144,6 +175,11 @@ h1, h2, h3, h4, .title-font { font-family: var(--font-outfit), sans-serif; }
 @media (min-width: 1250px) {
   .nav-links { gap: 24px; }
   .nav-links a { font-size: 0.8rem; }
+}
+
+@media (max-width: 768px) {
+  .search-kbd { display: none; }
+  .search-trigger-btn { padding: 8px; }
 }
 
 /* Hero Section (New 2-Column Layout) */
