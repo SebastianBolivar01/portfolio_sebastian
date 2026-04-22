@@ -78,6 +78,11 @@ export interface TranslationSchema {
   contactTitle: string;
   contactDesc2: string;
   footerText: string;
+  footerQuickLinks: string;
+  footerGetInTouch: string;
+  footerDesc: string;
+  footerCTA: string;
+  footerBuiltWith: string;
   proj1Title: string;
   proj1Desc: string;
   proj2Title: string;

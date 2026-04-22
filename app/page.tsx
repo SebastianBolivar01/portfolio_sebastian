@@ -114,7 +114,7 @@ export default function Home() {
             </Reveal>
           </main>
 
-          <Footer text={t.footerText} />
+          <Footer t={t} />
           <ScrollToTop />
         </>
       )}

@@ -1,22 +1,20 @@
 "use client";
 
 interface FooterProps {
-  text: string;
+  t: any;
 }
 
-export default function Footer({ text }: FooterProps) {
-  const currentYear = new Date().getFullYear();
-
+export default function Footer({ t }: FooterProps) {
   const socialLinks = [
     { icon: "devicon-github-original", href: "https://github.com/SebastianBolivar01", label: "GitHub" },
     { icon: "devicon-linkedin-plain", href: "https://www.linkedin.com/in/sebastian-bolivar-cabrera-689309405/", label: "LinkedIn" },
   ];
 
   const quickLinks = [
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#portfolios", label: "Projects" },
-    { href: "#contact", label: "Contact" },
+    { href: "#about", label: t.navAbout },
+    { href: "#skills", label: t.navSkills },
+    { href: "#portfolios", label: t.navPortfolios },
+    { href: "#contact", label: t.navContact },
   ];
 
   return (
@@ -59,7 +57,7 @@ export default function Footer({ text }: FooterProps) {
               </span>
             </a>
             <p className="text-text-secondary text-[0.85rem] leading-[1.7] max-w-[300px]">
-              Full-Stack Developer crafting modern, scalable, and beautiful digital experiences from Colombia 🇨🇴
+              {t.footerDesc}
             </p>
             {/* Social Links */}
             <div className="flex gap-3 mt-2">
@@ -75,7 +73,6 @@ export default function Footer({ text }: FooterProps) {
                   <i className={social.icon}></i>
                 </a>
               ))}
-              {/* Email icon (no devicon) */}
               <a
                 href="mailto:bolivarsebas9@gmail.com"
                 aria-label="Email"
@@ -89,7 +86,7 @@ export default function Footer({ text }: FooterProps) {
           {/* Quick Links Column */}
           <div className="flex flex-col gap-5">
             <h4 className="text-text-primary font-outfit font-bold text-[0.85rem] uppercase tracking-[2px]">
-              Quick Links
+              {t.footerQuickLinks}
             </h4>
             <nav className="flex flex-col gap-3">
               {quickLinks.map((link) => (
@@ -108,7 +105,7 @@ export default function Footer({ text }: FooterProps) {
           {/* Contact Info Column */}
           <div className="flex flex-col gap-5">
             <h4 className="text-text-primary font-outfit font-bold text-[0.85rem] uppercase tracking-[2px]">
-              Get In Touch
+              {t.footerGetInTouch}
             </h4>
             <div className="flex flex-col gap-4">
               <a 
@@ -136,7 +133,7 @@ export default function Footer({ text }: FooterProps) {
               href="#contact" 
               className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-bg-matte text-[0.75rem] font-bold font-outfit uppercase tracking-wider rounded-full transition-all duration-300 hover:shadow-[0_5px_20px_var(--aurora-glow)] hover:-translate-y-0.5 no-underline w-fit"
             >
-              Let&apos;s Work Together
+              {t.footerCTA}
               <span className="text-sm">→</span>
             </a>
           </div>
@@ -145,10 +142,10 @@ export default function Footer({ text }: FooterProps) {
         {/* Bottom Bar */}
         <div className="border-t border-white/8 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-text-muted text-[0.75rem] text-center md:text-left">
-            {text}
+            {t.footerText}
           </p>
           <div className="flex items-center gap-2 text-text-muted text-[0.75rem]">
-            <span>Built with</span>
+            <span>{t.footerBuiltWith}</span>
             <span className="text-accent font-semibold flex items-center gap-1">
               <i className="devicon-nextjs-plain text-sm"></i> Next.js
             </span>
