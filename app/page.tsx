@@ -22,6 +22,7 @@ import Reveal from "./components/Reveal";
 import GameOverlay from "./components/games/GameOverlay";
 import CommandPalette from "./components/CommandPalette";
 import GitHubActivity from "./components/GitHubActivity";
+import ScrollProgress from "./components/ScrollProgress";
 
 export default function Home() {
   const { theme, mounted, toggleTheme } = useTheme();
@@ -45,6 +46,7 @@ export default function Home() {
 
   return (
     <>
+      <ScrollProgress />
       <CommandPalette 
         isOpen={isCmdOpen}
         onClose={() => setIsCmdOpen(false)}
