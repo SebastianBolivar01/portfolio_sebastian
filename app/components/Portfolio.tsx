@@ -44,7 +44,7 @@ export default function Portfolio({ t }: PortfolioProps) {
       demo: "https://calculadora17pro-max.vercel.app/"
     },
     {
-      image: "/unishop.png", // Fallback for 6th image
+      image: "/landing.png",
       title: t.proj6Title,
       desc: t.proj6Desc,
       github: "https://github.com/SebastianBolivar01/landing_page",
