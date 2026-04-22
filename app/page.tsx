@@ -70,7 +70,6 @@ export default function Home() {
             toggleTheme={toggleTheme} 
             handleLangChange={handleLangChange} 
             onLogoClick={handleLogoClick}
-            onSearchClick={() => setIsCmdOpen(true)}
           />
 
           <main>
