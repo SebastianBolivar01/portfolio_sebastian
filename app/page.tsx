@@ -21,6 +21,7 @@ import CursorFollower from "./components/CursorFollower";
 import Reveal from "./components/Reveal";
 import GameOverlay from "./components/games/GameOverlay";
 import CommandPalette from "./components/CommandPalette";
+import GitHubActivity from "./components/GitHubActivity";
 
 export default function Home() {
   const { theme, mounted, toggleTheme } = useTheme();
@@ -94,6 +95,8 @@ export default function Home() {
             <Reveal>
               <Experience t={t} />
             </Reveal>
+
+            <GitHubActivity t={t} />
 
             <Reveal>
               <Portfolio t={t} />
