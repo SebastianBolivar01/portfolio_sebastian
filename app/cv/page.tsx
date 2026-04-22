@@ -5,13 +5,12 @@ import { useRouter } from "next/navigation";
 import { translations } from "../i18n";
 import { Lang } from "../types";
 import { useTheme } from "../hooks/useTheme";
+import { useLanguage } from "../hooks/useLanguage";
 
 export default function CVPage() {
   const router = useRouter();
   const { theme, toggleTheme, mounted } = useTheme();
-  
-  // Using English as default for CV, or could detect lang from URL/State
-  const t = translations.en;
+  const { lang, t, handleLangChange } = useLanguage();
   
   const handlePrint = () => {
     window.print();
@@ -25,15 +24,21 @@ export default function CVPage() {
       <div className="cv-controls no-print">
         <div className="cv-controls-left">
           <button onClick={() => router.push("/")} className="cv-back-btn">
-            ← Back to Portfolio
+            ← {t.cvBack}
           </button>
         </div>
         <div className="cv-controls-right">
+          <select value={lang} onChange={handleLangChange} className="cv-lang-select">
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+            <option value="it">IT</option>
+            <option value="pt">PT</option>
+          </select>
           <button onClick={toggleTheme} className="cv-theme-toggle">
             {theme === "dark" ? "☀️" : "🌙"}
           </button>
           <button onClick={handlePrint} className="cv-download-btn">
-            Download as PDF
+            {t.cvDownload}
           </button>
         </div>
       </div>
@@ -59,7 +64,7 @@ export default function CVPage() {
             
             {/* Contacts */}
             <section className="cv-section">
-              <h2 className="cv-section-title">CONTACTS</h2>
+              <h2 className="cv-section-title">{t.cvContacts}</h2>
               <div className="cv-contact-list">
                 <div className="cv-contact-item">
                   <span className="cv-icon">📞</span>
@@ -94,7 +99,7 @@ export default function CVPage() {
 
             {/* Skills */}
             <section className="cv-section">
-              <h2 className="cv-section-title">SKILLS</h2>
+              <h2 className="cv-section-title">{t.cvSkills}</h2>
               <div className="cv-skills-grid">
                 {["React", "Next.js", "TS", "Python", "Django", "Node.js"].map((skill) => (
                   <div key={skill} className="cv-skill-circle-box">
@@ -108,7 +113,7 @@ export default function CVPage() {
 
             {/* Hobbies */}
             <section className="cv-section">
-              <h2 className="cv-section-title">HOBBIES</h2>
+              <h2 className="cv-section-title">{t.cvHobbies}</h2>
               <div className="cv-hobbies-grid">
                 <div className="cv-hobby-item">
                   <span className="cv-hobby-icon">🎮</span>
@@ -135,7 +140,7 @@ export default function CVPage() {
             
             {/* Profile */}
             <section className="cv-section">
-              <h2 className="cv-section-title">PROFILE</h2>
+              <h2 className="cv-section-title">{t.cvProfile}</h2>
               <p className="cv-profile-text">
                 {t.aboutDesc1} {t.aboutDesc2}
               </p>
@@ -143,7 +148,7 @@ export default function CVPage() {
 
             {/* Education */}
             <section className="cv-section">
-              <h2 className="cv-section-title">EDUCATION</h2>
+              <h2 className="cv-section-title">{t.cvEducation}</h2>
               <div className="cv-timeline">
                 {t.education.map((edu: any, i: number) => (
                   <div key={i} className="cv-timeline-item">
@@ -160,7 +165,7 @@ export default function CVPage() {
 
             {/* Experience */}
             <section className="cv-section">
-              <h2 className="cv-section-title">EXPERIENCE</h2>
+              <h2 className="cv-section-title">{t.cvExperience}</h2>
               <div className="cv-timeline">
                 {t.work.map((job: any, i: number) => (
                   <div key={i} className="cv-timeline-item">
@@ -207,7 +212,7 @@ export default function CVPage() {
           align-items: center;
         }
 
-        .cv-back-btn, .cv-download-btn, .cv-theme-toggle {
+        .cv-back-btn, .cv-download-btn, .cv-theme-toggle, .cv-lang-select {
           padding: 10px 20px;
           border-radius: 8px;
           border: 1px solid var(--accent-primary);
@@ -219,6 +224,20 @@ export default function CVPage() {
           display: flex;
           align-items: center;
           justify-content: center;
+          font-family: 'Inter', sans-serif;
+        }
+
+        .cv-lang-select {
+          appearance: none;
+          padding-right: 30px;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23f5c71e' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: calc(100% - 10px) center;
+        }
+
+        .cv-lang-select option {
+          background: var(--bg-secondary);
+          color: var(--text-primary);
         }
 
         .cv-theme-toggle {

@@ -91,6 +91,14 @@ export interface TranslationSchema {
   proj6Title: string;
   proj6Desc: string;
   sourceCode: string;
+  cvProfile: string;
+  cvContacts: string;
+  cvSkills: string;
+  cvEducation: string;
+  cvExperience: string;
+  cvHobbies: string;
+  cvBack: string;
+  cvDownload: string;
 }
 
 export interface Project {
